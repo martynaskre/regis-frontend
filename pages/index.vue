@@ -1,15 +1,14 @@
 <template>
-  <Tutorial/>
+  <preLogin/>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator';
-import { AppModule } from '~/store';
+import preLogin from './preLogin.vue'
 
-@Component
-export default class Index extends Vue {
-  mounted() {
-    AppModule.testAction();
+export default {
+  components:{
+    preLogin,
   }
+
 }
 </script>
