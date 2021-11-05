@@ -129,4 +129,9 @@ export default{
     grid-area: 55 / 79 / 74 / 88;           /* <row-start> / <column-start> / <row-end> / <column-end> */
     z-index: 3;
 }
+.rectangleSlide{
+    background: #EFF2F1;
+    grid-area: 1 / 30 / 100 / 100;
+    z-index: 100;
+}
 </style>

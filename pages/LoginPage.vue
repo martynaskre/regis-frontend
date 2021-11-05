@@ -28,6 +28,7 @@ export default {
     width: 40%;
     height: 8%;
     background: rgba(64, 89, 173, 0.65);
+    margin-bottom: calc(10px + 0.5vw);
     color: white;
 }
 
