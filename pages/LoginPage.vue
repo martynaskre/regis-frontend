@@ -3,8 +3,8 @@
         <backRectangles />
         <div class="container">
             <h1>REGIS</h1>
-            <input id="vardas" type="text" placeholder="Prisijungimo vardas"><br>
-            <input id="slaptazodis" type="text" placeholder="Slaptažodis"><br>
+            <input id="vardas" type="text" placeholder="Prisijungimo vardas">
+            <input id="slaptazodis" type="text" placeholder="Slaptažodis">
             <nuxt-link to='/' class="btn log">Prisijungti</nuxt-link>
         </div>
     </div>
@@ -32,11 +32,4 @@ export default {
     color: white;
 }
 
-input{
-    position: relative;
-    text-align: center;
-    font-size: calc(12px + 0.8vw);
-    width: 66%;
-    margin-bottom: calc(10px + 0.5vw);
-}
 </style>

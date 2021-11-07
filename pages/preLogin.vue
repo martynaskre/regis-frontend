@@ -29,12 +29,13 @@ export default {
     background: rgba(64, 89, 173, 0.65);
     color: white;
     margin: calc(10px + 0.8vw);
+    padding-top: 0.3vw;
 }
 .reg{
     position: absolute;
     width: 20%;
     left: 77%;
-    bottom: -8%;
+    bottom: -7%;
     background: transparent;
     color: #555555;
     font-family: Montserrat;
