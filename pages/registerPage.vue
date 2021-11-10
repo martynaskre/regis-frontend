@@ -1,5 +1,5 @@
 <template>
-    <div class="loginBackground">
+    <div >
         <backRectangles />
         <!-- <div class="containerRegister">
             <h1>Register as a customer</h1>
@@ -10,9 +10,9 @@
             <input id="slaptazodis" type="text" placeholder="Phone Number"><br>
             <nuxt-link to='/' class="btn log">Register</nuxt-link>
         </div> -->
-        <div class="RegisterSlider Slider-right">
-            <button class="sliderBtn btn-left">
-                <div class="triangle triangle-right"></div>
+        <div class="RegisterSlider" :class="SliderStyle">
+            <button class="sliderBtn btn-left" :class="SliderBtnStyle" @click="sliderPosition=!sliderPosition">
+                <div class="triangle triangle-right" :class="SliderBtnTriangle"></div>
             </button>
             <h1>REGIS</h1>
         </div>
@@ -21,10 +21,35 @@
 
 <script>
 import backRectangles from '../components/backRectangles.vue';
-
 export default {
     components:{
         backRectangles,
+    },
+    data(){
+        return{
+            sliderPosition: false
+        }
+    },
+    computed:{
+        SliderStyle(){
+            return{
+                SliderRight: this.sliderPosition,
+                SliderLeft: !this.sliderPosition,
+
+            }
+        },
+        SliderBtnStyle(){
+            return{
+                btnRight: !this.sliderPosition,
+                btnLeft: this.sliderPosition,
+            }
+        },
+        SliderBtnTriangle(){
+            return{
+                triangleRight: this.sliderPosition,
+                triangleLeft: !this.sliderPosition,
+            }
+        }
     }
 }
 </script>
@@ -57,13 +82,13 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; 
-
+    align-items: center;
+    transition-duration: 0.4s;
 }
-.Slider-left{
+.SliderLeft{
     right: 60%;
 }
-.Slider-right{
+.SliderRight{
     left: 60%;   
 }
 .sliderBtn{
@@ -76,10 +101,10 @@ export default {
     background: #4059AD;
     cursor: pointer;
 }
-.btn-right{
+.btnRight{
     right: 1%;
 }
-.btn-left{
+.btnLeft{
     left: 1%;
 }
 .triangle{
@@ -90,19 +115,19 @@ export default {
     border-top: 1vw solid transparent;
     border-bottom: 1vw solid transparent;
 }
-.triangle-right{
+.triangleRight{
     left: 5%;
     top: 17%;
     border-right: 1.7vw solid #EFF2F1;
 }
-.triangle-left{
+.triangleLeft{
     right: 5%;
     top: 17%;
     border-left: 1.7vw solid #EFF2F1;
 }
 h1{
     font-weight: bold;
-    font-size: calc(80px + 5vw);
+    font-size: calc(25px + 8vw);
     top: 40%;
 }
 input{
