@@ -1,15 +1,35 @@
 <template>
     <div >
         <backRectangles />
-        <!-- <div class="containerRegister">
-            <h1>Register as a customer</h1>
-            <input id="vardas" type="text" placeholder="Name"><br>
-            <input id="slaptazodis" type="text" placeholder="Surname"><br>
-            <input id="slaptazodis" type="text" placeholder="Password"><br>
-            <input id="slaptazodis" type="text" placeholder="Email"><br>
-            <input id="slaptazodis" type="text" placeholder="Phone Number"><br>
-            <nuxt-link to='/' class="btn log">Register</nuxt-link>
-        </div> -->
+        <div :class="ContainerCustomer">
+            <h2>Register as a customer</h2>
+            <input id="NameC" type="text" placeholder="Name">
+            <input id="SurnameC" type="text" placeholder="Surname">
+            <input id="PasswordC" type="text" placeholder="Password">
+            <input id="EmailC" type="text" placeholder="Email">
+            <input id="PhoneNumberC" type="text" placeholder="Phone Number"> 
+            <nuxt-link to='/' class="btnReg">Register</nuxt-link>
+        </div>
+        <div :class="ContainerProvider">
+            <h2>Register as a service <br/> provider</h2>
+            <input id="NameP" type="text" placeholder="Name">
+            <input id="SurnameP" type="text" placeholder="Surname">
+            <input id="PasswordP" type="text" placeholder="Password">
+            <h3>Legal entity type</h3>
+            <div class="checkBox-positioning">
+                <input type="checkbox" class="checkBox">
+                <h4>Individual</h4>
+                <input type="checkbox" class="checkBox">
+                <h4>Juridical Person</h4>
+            </div>
+            <input id="EmailP" type="text" placeholder="Email">
+            <input id="PhoneNumberP" type="text" placeholder="Phone Number">
+            <input id="CompanyNameP" type="text" placeholder="Company name">
+            <input id="CategoryP" type="text" placeholder="Category">
+            <input id="CompanyCodeP" type="text" placeholder="Company code">
+            <input id="VATcodeP" type="text" placeholder="VAT code">
+            <nuxt-link to='/' class="btnReg">Register</nuxt-link>
+        </div>
         <div class="RegisterSlider" :class="SliderStyle">
             <button class="sliderBtn btn-left" :class="SliderBtnStyle" @click="sliderPosition=!sliderPosition">
                 <div class="triangle triangle-right" :class="SliderBtnTriangle"></div>
@@ -27,7 +47,7 @@ export default {
     },
     data(){
         return{
-            sliderPosition: false
+            sliderPosition: true,
         }
     },
     computed:{
@@ -49,6 +69,20 @@ export default {
                 triangleRight: this.sliderPosition,
                 triangleLeft: !this.sliderPosition,
             }
+        },
+        ContainerCustomer(){
+            return{
+                containerRegister: this.sliderPosition,
+                Customer: this.sliderPosition,
+                hide: !this.sliderPosition,
+            }
+        },
+        ContainerProvider(){
+            return{
+                containerRegister: !this.sliderPosition,
+                Provider: !this.sliderPosition,
+                hide: this.sliderPosition,
+            }
         }
     }
 }
@@ -56,81 +90,5 @@ export default {
 
 <style scoped>
 @import '../components/css-files/LoginStyling.css';
-.containerRegister{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    left: calc((100% - calc(150px + 23vw))/2);
-    top: calc((100% - calc(350px + 12vw))/2);
-    width: calc(150px + 23vw);
-    height: calc(350px + 12vw);
-    border-radius: 10px;
-    background:rgba(250,250,250,0.7);
-    z-index: 20;
-}
-.RegisterSlider{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: 0px;
-    background-color: #EFF2F1;
-    z-index: 20;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition-duration: 0.4s;
-}
-.SliderLeft{
-    right: 60%;
-}
-.SliderRight{
-    left: 60%;   
-}
-.sliderBtn{
-    position: absolute;
-    top: 1%;
-    border-radius: 50%;
-    z-index: 21;
-    width: 3vw;
-    aspect-ratio: 1;
-    background: #4059AD;
-    cursor: pointer;
-}
-.btnRight{
-    right: 1%;
-}
-.btnLeft{
-    left: 1%;
-}
-.triangle{
-    position: absolute;
-    width: 2vw;
-    aspect-ratio: 1;
-    z-index: 22;
-    border-top: 1vw solid transparent;
-    border-bottom: 1vw solid transparent;
-}
-.triangleRight{
-    left: 5%;
-    top: 17%;
-    border-right: 1.7vw solid #EFF2F1;
-}
-.triangleLeft{
-    right: 5%;
-    top: 17%;
-    border-left: 1.7vw solid #EFF2F1;
-}
-h1{
-    font-weight: bold;
-    font-size: calc(25px + 8vw);
-    top: 40%;
-}
-input{
-    margin-bottom: calc(5px + 0.3vw);
-}
+@import '../components/css-files/RegisterStyling.css';
 </style>

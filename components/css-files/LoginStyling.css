@@ -45,6 +45,6 @@ input {
   position: relative;
   text-align: center;
   font-size: calc(12px + 0.8vw);
-  width: 66%;
+  width: 60%;
   margin-bottom: calc(10px + 0.5vw);
 }

@@ -3,9 +3,9 @@
         <backRectangles />
         <div class="container">
             <h1>REGIS</h1>
-            <nuxt-link to="/LoginPage" class="btn">Klientas</nuxt-link>
-            <nuxt-link to="/LoginPage" class="btn">Profesionalas</nuxt-link>
-            <nuxt-link to='/registerPage' class="btn reg">Registracija</nuxt-link>
+            <nuxt-link to="/LoginPage" class="btn">Customer</nuxt-link>
+            <nuxt-link to="/LoginPage" class="btn">Service provider</nuxt-link>
+            <nuxt-link to='/registerPage' class="btn reg">Register</nuxt-link>
         </div>
     </div>
 </template>
@@ -34,7 +34,7 @@ export default {
 .reg{
     position: absolute;
     width: 20%;
-    left: 77%;
+    right: -6%;
     bottom: -7%;
     background: transparent;
     color: #555555;
