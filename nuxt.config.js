@@ -1,4 +1,7 @@
 export default {
+  server: {
+    port: 4000,
+  },
   head: {
     title: 'Regis',
     htmlAttrs: {
@@ -40,9 +43,25 @@ export default {
     '@nuxt/typescript-build',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
   ],
   modules: [
   ],
   build: {
   },
+  axios: {
+    baseURL: process.env.BASE_URL,
+  },
+  auth: {
+    strategies: {
+      provider: {
+        scheme: 'local',
+        endpoints: {
+          login: { url: 'providers/login', method: 'post', propertyName: 'data.access_token' },
+          user: { url: 'providers/user', method: 'get', propertyName: 'data' },
+          logout: false
+        }
+      }
+    }
+  }
 };

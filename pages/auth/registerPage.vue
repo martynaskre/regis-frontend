@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import backRectangles from '../components/backRectangles.vue';
-import CustomerRegister from '../components/Register/CustomerRegister.vue';
-import ProviderRegister from '../components/Register/ProviderRegister.vue';
-import RegisterSlider from '../components/Register/RegisterSlider.vue';
+import backRectangles from '../../components/backRectangles.vue';
+import CustomerRegister from '../../components/Register/CustomerRegister.vue';
+import ProviderRegister from '../../components/Register/ProviderRegister.vue';
+import RegisterSlider from '../../components/Register/RegisterSlider.vue';
 export default {
     components:{
         backRectangles,
@@ -34,6 +34,6 @@ export default {
 </script>
 
 <style scoped>
-@import '../components/css-files/LoginStyling.css';
-@import '../components/css-files/RegisterStyling.css';
+@import '../../components/css-files/LoginStyling.css';
+@import '../../components/css-files/RegisterStyling.css';
 </style>

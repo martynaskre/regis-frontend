@@ -3,15 +3,15 @@
         <backRectangles />
         <div class="container">
             <h1>REGIS</h1>
-            <nuxt-link to="/LoginPage" class="btn">Customer</nuxt-link>
-            <nuxt-link to="/LoginPage" class="btn">Service provider</nuxt-link>
-            <nuxt-link to='/registerPage' class="btn reg">Register</nuxt-link>
+            <nuxt-link to="/auth/LoginPage" class="btn">Customer</nuxt-link>
+            <nuxt-link to="/auth/LoginPage" class="btn">Service provider</nuxt-link>
+            <nuxt-link to='/auth/registerPage' class="btn reg">Register</nuxt-link>
         </div>
     </div>
 </template>
 
 <script lang="ts">
-import backRectangles from '../components/backRectangles.vue';
+import backRectangles from '../../components/backRectangles.vue';
 
 export default {
     components:{
@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style scoped>
-@import '../components/css-files/LoginStyling.css';
+@import '../../components/css-files/LoginStyling.css';
 .btn{
     width: 60%;
     height: 12%;
