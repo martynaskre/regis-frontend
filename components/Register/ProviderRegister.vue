@@ -6,9 +6,9 @@
             <input id="PasswordP" type="text" placeholder="Password">
             <h3>Legal entity type</h3>
             <div class="checkBox-positioning">
-                <input type="checkbox" class="checkBox">
+                <input type="radio" name="isLegalEntity" value="0" class="checkBox">
                 <h4>Individual</h4>
-                <input type="checkbox" class="checkBox">
+                <input type="radio" name="isLegalEntity" value="1" class="checkBox">
                 <h4>Juridical Person</h4>
             </div>
             <input id="EmailP" type="text" placeholder="Email">
