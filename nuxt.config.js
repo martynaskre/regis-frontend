@@ -2,6 +2,9 @@ export default {
   server: {
     port: 4000,
   },
+  router: {
+    middleware: 'reset-errors',
+  },
   head: {
     title: 'Regis',
     htmlAttrs: {
@@ -36,14 +39,56 @@ export default {
   css: [
   ],
   plugins: [
+    '~/plugins/axios',
   ],
   components: true,
   buildModules: [
     '@nuxtjs/tailwindcss',
     '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
   ],
   modules: [
   ],
   build: {
+  },
+  axios: {
+    baseURL: process.env.BASE_URL,
+  },
+  auth: {
+    redirect: {
+      login: '/auth',
+      logout: '/auth',
+      home: '/'
+    },
+    strategies: {
+      provider: {
+        scheme: 'local',
+        token: {
+          property: 'data.access_token',
+        },
+        user: {
+          property: 'data',
+        },
+        endpoints: {
+          login: { url: 'providers/login', method: 'post' },
+          user: { url: 'providers/user', method: 'get' },
+          logout: false,
+        },
+      },
+      client: {
+        scheme: 'local',
+        token: {
+          property: 'data.access_token',
+        },
+        user: {
+          property: 'data',
+        },
+        endpoints: {
+          login: { url: 'clients/login', method: 'post' },
+          user: { url: 'clients/user', method: 'get' },
+          logout: false,
+        },
+      },
+    },
   },
 };
