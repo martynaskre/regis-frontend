@@ -30,7 +30,7 @@ export default{
                 triangleRight: this.slider,
                 triangleLeft: !this.slider,
             }
-        },   
+        },
     },
     methods:{
         onClick(){
@@ -41,6 +41,6 @@ export default{
 </script>
 
 <style scoped>
-@import '../css-files/LoginStyling.css';
-@import '../css-files/RegisterStyling.css';
+@import '~/assets/css/LoginStyling.css';
+@import '~/assets/css/RegisterStyling.css';
 </style>

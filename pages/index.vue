@@ -1,14 +1,10 @@
 <template>
-  <preLogin/>
+  <div>
+    <Navbar/>
+  </div>
 </template>
 
-<script lang="ts">
-import preLogin from './preLogin.vue'
-
+<script>
 export default {
-  components:{
-    preLogin,
-  }
-
-}
+};
 </script>

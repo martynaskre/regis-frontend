@@ -5,8 +5,8 @@
             <input id="SurnameC" type="text" placeholder="Surname">
             <input id="PasswordC" type="text" placeholder="Password">
             <input id="EmailC" type="text" placeholder="Email">
-            <input id="PhoneNumberC" type="text" placeholder="Phone Number"> 
-            <nuxt-link to='/' class="btnReg">Register</nuxt-link>
+            <input id="PhoneNumberC" type="text" placeholder="Phone Number">
+            <nuxt-link to='/auth' class="btnReg">Register</nuxt-link>
         </div>
 </template>
 
@@ -29,6 +29,6 @@ export default{
 </script>
 
 <style scoped>
-@import '../css-files/LoginStyling.css';
-@import '../css-files/RegisterStyling.css';
+@import '~/assets/css/LoginStyling.css';
+@import '~/assets/css/RegisterStyling.css';
 </style>

@@ -1,27 +1,22 @@
 <template>
   <div>
-    <backRectangles />
+    <BackRectangles />
     <div class="container">
       <h1>REGIS</h1>
       <input id="Email" type="text" placeholder="Email" />
       <input id="Password" type="text" placeholder="Password" />
-      <nuxt-link to="/CustomerMain" class="btn log">Login</nuxt-link>
+      <nuxt-link to="/auth" class="btn log">Login</nuxt-link>
     </div>
   </div>
 </template>
 
-<script lang="ts">
-import backRectangles from '../components/backRectangles.vue';
-
+<script>
 export default {
-  components: {
-    backRectangles,
-  },
 };
 </script>
 
 <style scoped>
-@import '../components/css-files/LoginStyling.css';
+@import '~/assets/css/LoginStyling.css';
 
 .log {
   width: 40%;
