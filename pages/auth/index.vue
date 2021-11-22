@@ -3,8 +3,8 @@
     <BackRectangles />
     <div class="container">
       <h1>REGIS</h1>
-      <nuxt-link to="/auth/login" class="btn">Customer</nuxt-link>
-      <nuxt-link to="/auth/login" class="btn">Service provider</nuxt-link>
+      <nuxt-link to="/auth/login/client" class="btn">Client</nuxt-link>
+      <nuxt-link to="/auth/login/provider" class="btn">Service provider</nuxt-link>
       <nuxt-link to="/auth/signup" class="btn reg">Register</nuxt-link>
     </div>
   </div>
@@ -12,6 +12,7 @@
 
 <script>
 export default {
+  middleware: 'guest',
 };
 </script>
 
