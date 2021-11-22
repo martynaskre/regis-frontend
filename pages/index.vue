@@ -1,10 +1,10 @@
 <template>
   <div>
-    <Navbar/>
+    <Navbar />
+    <searchBox />
   </div>
 </template>
 
 <script>
-export default {
-};
+export default {};
 </script>

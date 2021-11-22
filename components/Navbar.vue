@@ -5,6 +5,7 @@
     <div class="rect third"></div>
     <div class="rect forth"></div>
     <div class="rect fifth"></div>
+    <h1>Regis</h1>
   </div>
 </template>
 
@@ -12,7 +13,7 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
 .rect {
   position: fixed;
   height: 90px;
@@ -47,5 +48,12 @@ export default {};
   background: #f4b942;
   z-index: 6;
   border-radius: 0;
+}
+h1 {
+  position: absolute;
+  line-height: 90px;
+  z-index: 11;
+  font-size: 50px;
+  margin-left: 10px;
 }
 </style>
