@@ -96,7 +96,7 @@ input {
 .btnReg {
   width: 60%;
   height: 8%;
-  background: #4059ad;
+  background: rgba(64, 89, 173, 0.85);
   margin-top: calc(15px + 1vw);
   margin-bottom: calc(15px + 1vw);
   color: white;
