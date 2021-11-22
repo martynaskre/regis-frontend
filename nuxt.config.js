@@ -1,4 +1,7 @@
 export default {
+  server: {
+    port: 4000,
+  },
   head: {
     title: 'Regis',
     htmlAttrs: {
@@ -33,11 +36,9 @@ export default {
   css: [
   ],
   plugins: [
-    '~/plugins/axios-accessor.ts'
   ],
   components: true,
   buildModules: [
-    '@nuxt/typescript-build',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/axios',
   ],

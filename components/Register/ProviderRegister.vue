@@ -17,7 +17,7 @@
             <input id="CategoryP" type="text" placeholder="Category">
             <input id="CompanyCodeP" type="text" placeholder="Company code">
             <input id="VATcodeP" type="text" placeholder="VAT code">
-            <nuxt-link to='/' class="btnReg">Register</nuxt-link>
+            <nuxt-link to='/auth' class="btnReg">Register</nuxt-link>
     </div>
 </template>
 
@@ -40,6 +40,6 @@ export default{
 </script>
 
 <style scoped>
-@import '../css-files/LoginStyling.css';
-@import '../css-files/RegisterStyling.css';
+@import '~/assets/css/LoginStyling.css';
+@import '~/assets/css/RegisterStyling.css';
 </style>

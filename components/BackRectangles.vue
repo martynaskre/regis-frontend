@@ -27,7 +27,7 @@ export default{
 </script>
 
 <style>
-@import '../components/css-files/LoginStyling.css';
+@import '~/assets/css/LoginStyling.css';
 .border{
     border-radius: 20px;
     border: none;
@@ -39,7 +39,7 @@ export default{
     border-radius: 0px 0px 20px 0px;
     z-index: 1;
 }
-.rectangle2{    
+.rectangle2{
     background: #F4B942;
     grid-area: 60 / 85 / 101 / 101;            /* <row-start> / <column-start> / <row-end> / <column-end> */
     z-index: 1;
@@ -52,7 +52,7 @@ export default{
     border-radius: 0 0 20px 20px;
 }
 .rectangle4{
-    background: #EFF2F1;    
+    background: #EFF2F1;
     grid-area: 25 / 1 / 55 / 15;            /* <row-start> / <column-start> / <row-end> / <column-end> */
     z-index: 2;
     border-radius: 0 20px 20px 0;
@@ -80,15 +80,15 @@ export default{
 .rectangle9{
     background: #F4B942;
     grid-area: 42 / 5 / 58 / 13;           /* <row-start> / <column-start> / <row-end> / <column-end> */
-    z-index: 4; 
+    z-index: 4;
 }
 .rectangle10{
-    background: #EFF2F1;    
+    background: #EFF2F1;
     grid-area: 50 / 83 / 80 / 95;            /* <row-start> / <column-start> / <row-end> / <column-end> */
     z-index: 2;
 }
 .rectangle11{
-    background: #EFF2F1;    
+    background: #EFF2F1;
     grid-area: 85 / 78 / 101 / 88;            /* <row-start> / <column-start> / <row-end> / <column-end> */
     z-index: 2;
     border-radius: 20px 20px 0 0;
@@ -104,7 +104,7 @@ export default{
     z-index: 3;
 }
 .rectangle14{
-    background: #EFF2F1;    
+    background: #EFF2F1;
     grid-area: 80 / 90 / 90 / 100;            /* <row-start> / <column-start> / <row-end> / <column-end> */
     z-index: 4;
 }
@@ -115,14 +115,14 @@ export default{
     border-radius: 20px 20px 0 0;
 }
 .rectangle16{
-    background: #EFF2F1;    
+    background: #EFF2F1;
     grid-area: 80 / 70 / 96 / 79;            /* <row-start> / <column-start> / <row-end> / <column-end> */
     z-index: 4;
 }
 .rectangle17{
     background: #F4B942;
     grid-area: 90 / 66 / 98 / 77;           /* <row-start> / <column-start> / <row-end> / <column-end> */
-    z-index: 5; 
+    z-index: 5;
 }
 .rectangle18{
     background: #97D8C4;

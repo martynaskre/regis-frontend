@@ -1,27 +1,22 @@
 <template>
   <div>
-    <backRectangles />
+    <BackRectangles />
     <div class="container">
       <h1>REGIS</h1>
-      <nuxt-link to="/LoginPage" class="btn">Customer</nuxt-link>
-      <nuxt-link to="/LoginPage" class="btn">Service provider</nuxt-link>
-      <nuxt-link to="/registerPage" class="btn reg">Register</nuxt-link>
+      <nuxt-link to="/auth/login" class="btn">Customer</nuxt-link>
+      <nuxt-link to="/auth/login" class="btn">Service provider</nuxt-link>
+      <nuxt-link to="/auth/signup" class="btn reg">Register</nuxt-link>
     </div>
   </div>
 </template>
 
-<script lang="ts">
-import backRectangles from '../components/backRectangles.vue';
-
+<script>
 export default {
-  components: {
-    backRectangles,
-  },
 };
 </script>
 
 <style scoped>
-@import '../components/css-files/LoginStyling.css';
+@import '~/assets/css/LoginStyling.css';
 .btn {
   width: 60%;
   height: 12%;
@@ -37,7 +32,7 @@ export default {
   bottom: -7%;
   background: transparent;
   color: #555555;
-  font-family: Montserrat;
+  font-family: 'Montserrat';
   text-decoration-line: underline;
 }
 </style>
