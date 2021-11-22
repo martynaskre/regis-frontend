@@ -1,6 +1,7 @@
 <template>
   <div>
     <Navbar/>
+    <searchBox />
     <div v-if="$store.getters.clientLoggedIn" class="mt-32">
       Hi client {{ $store.getters.user.firstName }}!
 
