@@ -1,6 +1,6 @@
 export default {
   server: {
-    port: 4000,
+    port: process.env.SERVER_PORT,
   },
   router: {
     middleware: 'reset-errors',
