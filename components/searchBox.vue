@@ -26,32 +26,47 @@
   height: 70px;
   width: 50%;
   border-radius: 15px;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   background-color: white;
   z-index: 11;
+  justify-content: center;
+  padding: 10px;
+}
+@media (max-width: 1100px) {
+  .searchBar {
+    height: 200px;
+    width: 40%;
+    background-color: transparent;
+    flex-direction: column;
+  }
+  #Miestas,
+  #Paslaugos {
+    margin: 10px;
+    height: 50px;
+    border-radius: 10px;
+  }
 }
 input {
   z-index: 11;
   margin: 0;
-  left: 0;
 }
 input:focus {
   outline: none;
 }
 #Paslaugos {
-  width: 40%;
+  width: 100%;
   border-right: 1px solid #e1e1e1;
 }
 #Miestas {
-  width: 50%;
+  width: 100%;
 }
 button {
   width: 55px;
   aspect-ratio: 1;
   background: #4059ad;
   border-radius: 50%;
-  margin-right: 10px;
+  margin-right: 50px;
   display: flex;
   justify-content: center;
   align-items: center;

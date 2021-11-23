@@ -1,6 +1,12 @@
 <template>
   <div>
-    <input :id="name" :name="name" :type="type" :placeholder="placeholder" v-model="value">
+    <input
+      :id="name"
+      :name="name"
+      :type="type"
+      :placeholder="placeholder"
+      v-model="value"
+    />
     <div v-if="error">
       {{ error }}
     </div>
@@ -26,19 +32,23 @@ export default {
   data() {
     return {
       value: null,
-    }
+    };
   },
   computed: {
     error: function () {
-      return (this.$store.state.errors.errors.hasOwnProperty(this.name))
+      return this.$store.state.errors.errors.hasOwnProperty(this.name)
         ? this.$store.state.errors.errors[this.name]
         : null;
-    }
+    },
   },
   watch: {
     value(value) {
       this.$emit('input', value);
-    }
+    },
   },
 };
 </script>
+
+<style scoped>
+@import '~/assets/css/LoginStyling.css';
+</style>
