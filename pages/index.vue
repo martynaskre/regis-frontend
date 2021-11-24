@@ -1,7 +1,8 @@
 <template>
   <div>
-    <Navbar/>
-    <searchBox />
+    <Navbar />
+    <SearchBox />
+    <Cards />
     <div v-if="$store.getters.clientLoggedIn" class="mt-32">
       Hi client {{ $store.getters.user.firstName }}!
 
@@ -20,7 +21,7 @@ export default {
   methods: {
     logout() {
       this.$auth.logout();
-    }
-  }
+    },
+  },
 };
 </script>

@@ -5,7 +5,10 @@
     <div class="rect third"></div>
     <div class="rect forth"></div>
     <div class="rect fifth"></div>
-    <h1>Regis</h1>
+    <div class="navSpacing">
+      <h1>Regis</h1>
+      <nuxt-link to="/auth/" class="btn">auth</nuxt-link>
+    </div>
   </div>
 </template>
 
@@ -14,8 +17,23 @@ export default {};
 </script>
 
 <style scoped>
+.navSpacing {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.btn {
+  position: relative;
+  z-index: 11;
+  cursor: pointer;
+  width: 80px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid black;
+  background-color: red;
+}
 .rect {
-  position: fixed;
+  position: absolute;
   height: 90px;
   left: 0;
   top: 0px;
@@ -50,7 +68,7 @@ export default {};
   border-radius: 0;
 }
 h1 {
-  position: absolute;
+  position: relative;
   line-height: 90px;
   z-index: 11;
   font-size: 50px;
