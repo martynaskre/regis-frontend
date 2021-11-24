@@ -1,5 +1,5 @@
 <template>
-  <div class="containerrr">
+  <div class="cardContainer">
     <div v-for="name in names" :key="name" class="test"></div>
   </div>
 </template>
@@ -16,7 +16,8 @@ export default {
 </script>
 
 <style scoped>
-.containerrr {
+.cardContainer {
+  margin: auto;
   width: 100%;
   height: 500px;
   display: flex;
@@ -28,7 +29,7 @@ export default {
 .test {
   width: 350px;
   height: 250px;
-  margin: auto;
+  margin: 20px 5%;
   background: blue;
   border-radius: 20px;
 }

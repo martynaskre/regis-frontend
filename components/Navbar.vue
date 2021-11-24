@@ -7,7 +7,7 @@
     <div class="rect fifth"></div>
     <div class="navSpacing">
       <h1>Regis</h1>
-      <nuxt-link to="/auth/" class="btn">auth</nuxt-link>
+      <nuxt-link to="/auth/" class="btn"></nuxt-link>
     </div>
   </div>
 </template>
@@ -26,11 +26,13 @@ export default {};
   position: relative;
   z-index: 11;
   cursor: pointer;
-  width: 80px;
+  width: 70px;
+  margin-right: 10px;
   aspect-ratio: 1;
   border-radius: 50%;
   border: 2px solid black;
-  background-color: red;
+  background-image: url('https://www.pngitem.com/pimgs/m/150-1503941_user-windows-10-user-icon-png-transparent-png.png');
+  background-size: cover;
 }
 .rect {
   position: absolute;
