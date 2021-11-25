@@ -1,22 +1,56 @@
 <template>
   <div :class="ContainerCustomer">
     <h2>Register as a customer</h2>
-    <Input name="firstName" type="text" placeholder="First name" v-model="firstName" />
-    <Input name="lastName" type="text" placeholder="Last name" v-model="lastName" />
-    <Input name="email" type="email" placeholder="Email" v-model="email" />
-    <Input name="phoneNumber" type="text" placeholder="Phone number" v-model="phoneNumber" />
-    <Input name="password" type="password" placeholder="Password" v-model="password" />
-    <Input name="passwordConfirmation" type="password" placeholder="Password confirmation" v-model="passwordConfirmation" />
-    <button class="btnReg" @click="submit">
-      Signup
-    </button>
+    <Input
+      class="logInput"
+      name="firstName"
+      type="text"
+      placeholder="First name"
+      v-model="firstName"
+    />
+    <Input
+      class="logInput"
+      name="lastName"
+      type="text"
+      placeholder="Last name"
+      v-model="lastName"
+    />
+    <Input
+      class="logInput"
+      name="email"
+      type="email"
+      placeholder="Email"
+      v-model="email"
+    />
+    <Input
+      class="logInput"
+      name="phoneNumber"
+      type="text"
+      placeholder="Phone number"
+      v-model="phoneNumber"
+    />
+    <Input
+      class="logInput"
+      name="password"
+      type="password"
+      placeholder="Password"
+      v-model="password"
+    />
+    <Input
+      class="logInput"
+      name="passwordConfirmation"
+      type="password"
+      placeholder="Password confirmation"
+      v-model="passwordConfirmation"
+    />
+    <button class="btnReg" @click="submit">Signup</button>
   </div>
 </template>
 
 <script>
-export default{
+export default {
   name: 'CustomerRegister',
-  props:{
+  props: {
     customer: Boolean,
   },
   data() {
@@ -29,13 +63,13 @@ export default{
       passwordConfirmation: null,
     };
   },
-  computed:{
-    ContainerCustomer(){
+  computed: {
+    ContainerCustomer() {
       return {
         containerRegister: this.customer,
         Customer: this.customer,
         hide: !this.customer,
-      }
+      };
     },
   },
   methods: {
@@ -48,9 +82,9 @@ export default{
         password: this.password,
         passwordConfirmation: this.passwordConfirmation,
       });
-    }
+    },
   },
-}
+};
 </script>
 
 <style scoped>
