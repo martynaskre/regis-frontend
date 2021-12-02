@@ -41,11 +41,7 @@ h1 {
   font-weight: bold;
   font-size: calc(50px + 3vw);
 }
-Input {
+input {
   position: relative;
-  text-align: center;
   width: 100%;
-  margin: 0;
-  font-size: calc(12px + 0.8vw);
-  margin-bottom: calc(10px + 0.5vw);
 }

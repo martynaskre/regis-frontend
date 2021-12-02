@@ -1,13 +1,15 @@
 <template>
-  <div>
+  <div class="form-element"
+       :class="{ 'has-error': error }">
     <input
       :id="name"
       :name="name"
       :type="type"
       :placeholder="placeholder"
       v-model="value"
+      class="form-input"
     />
-    <div v-if="error">
+    <div class="form-element-error" v-if="error">
       {{ error }}
     </div>
   </div>
@@ -49,6 +51,25 @@ export default {
 };
 </script>
 
-<style scoped>
-@import '~/assets/css/LoginStyling.css';
+<style lang="scss">
+.form-element {
+  .form-input {
+    text-align: center;
+    font-size: calc(12px + 0.8vw);
+    margin: 0 0 calc(10px + 0.5vw);
+  }
+
+  .form-element-error {
+    text-align: left;
+    color: #ff5714;
+  }
+
+  &.has-error {
+    margin-bottom: 1rem;
+
+    .form-input {
+      margin-bottom: 0;
+    }
+  }
+}
 </style>

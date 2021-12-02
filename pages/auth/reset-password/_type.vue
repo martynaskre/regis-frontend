@@ -17,8 +17,16 @@
         placeholder="Slaptažodis"
         v-model="password"
       />
-      <nuxt-link :to="passwordResetUrl">Pamiršote slaptažodį?</nuxt-link>
-      <button class="btn log" @click="submit">Prisijungti</button>
+      <Input
+        class="logInput"
+        name="passwordConfirmation"
+        type="password"
+        placeholder="Pakartokite slaptažodį"
+        v-model="password"
+      />
+      <button class="btn log" @click="submit">
+        Nustatyti slaptažodį
+      </button>
     </div>
   </div>
 </template>
@@ -29,30 +37,25 @@ export default {
   data() {
     return {
       type: null,
+      token: null,
       email: null,
       password: null,
+      passwordConfirmation: null,
     };
-  },
-  computed: {
-    passwordResetUrl() {
-      return '/auth/forgot-password/' + this.type;
-    }
   },
   mounted() {
     this.type = this.$route.params.type;
+    this.token = this.$route.query.token;
 
-    if (!['provider', 'client'].includes(this.type)) {
+    if (!['provider', 'client'].includes(this.type) || !this.token) {
       this.$router.push('/auth/');
     }
+
+    this.email = this.$route.query.email;
   },
   methods: {
     async submit() {
-      await this.$store.dispatch(`${this.type}s/login`, {
-        email: this.email,
-        password: this.password,
-      });
-
-      console.log(this.$store.state.auth);
+      // TODO
     },
   },
 };
