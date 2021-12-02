@@ -38,6 +38,12 @@ export default {
   },
   css: [
   ],
+  styleResources: {
+    scss: [
+      '~assets/scss/mixins.scss',
+      '~assets/scss/variables.scss',
+    ]
+  },
   plugins: [
     '~/plugins/axios',
   ],
@@ -46,6 +52,7 @@ export default {
     '@nuxtjs/tailwindcss',
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
+    '@nuxtjs/style-resources',
   ],
   modules: [
   ],
