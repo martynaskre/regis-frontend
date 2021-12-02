@@ -158,10 +158,16 @@ export default {
 .timetable-wrapper {
   padding: 0 4rem;
   overflow-x: auto;
+  width: 100%;
+
+  @include media-breakpoint-down(md) {
+    padding: 0 1rem;
+  }
 
   .timetable {
-    width: 100%;
     position: relative;
+    width: 100%;
+    table-layout: fixed;
 
     &:before {
       content: '';
@@ -190,9 +196,18 @@ export default {
         border: 0.5px solid rgba(0, 0, 0, 0.34);
         padding: 1rem;
 
+        @include media-breakpoint-down(md) {
+          width: calc(80vw - 1rem);
+        }
+
         &:first-child {
           width: 7%;
           text-align: center;
+
+          @include media-breakpoint-down(md) {
+            //background-color: black;
+            width: 20vw;
+          }
         }
 
         &:last-child {

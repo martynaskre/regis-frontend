@@ -1,2 +1,13 @@
+// responsive breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+// primary colors
 $primary-green: #97D8C4;
 $primary-gray: #C4C4C4;
