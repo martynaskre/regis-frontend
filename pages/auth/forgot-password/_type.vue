@@ -3,14 +3,18 @@
     <BackRectangles />
     <div class="container">
       <h1>REGIS</h1>
+      <p v-if="successful" class="mb-2">Slaptažodžio atkūrimo laiškas išsiųstas į el. paštą.</p>
       <Input
         class="logInput"
         name="email"
         type="text"
         placeholder="El. paštas"
         v-model="email"
+        :disabled="disabled"
       />
-      <button class="btn log" @click="submit">
+      <button class="btn log"
+              :disabled="disabled"
+              @click="submit">
         Atkurti slaptažodį
       </button>
     </div>
@@ -24,6 +28,8 @@ export default {
     return {
       type: null,
       email: null,
+      successful: false,
+      disabled: false,
     };
   },
   mounted() {
@@ -35,7 +41,13 @@ export default {
   },
   methods: {
     async submit() {
-      // TODO
+      this.successful = await this.$store.dispatch(`${this.type}s/forgotPassword`, this.email);
+
+      if (this.successful) {
+        this.disabled = true;
+
+        this.$store.commit('errors/SET_ERRORS', {});
+      }
     },
   },
 };

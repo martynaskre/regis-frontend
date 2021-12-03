@@ -17,5 +17,27 @@ export const actions = {
     } catch (e) {
       //
     }
-  }
+  },
+  async forgotPassword(state, email) {
+    try {
+      await this.$axios.post('providers/forgot-password', {
+        email,
+      });
+
+      return true;
+    } catch (e) {
+      //
+    }
+
+    return false;
+  },
+  async resetPassword(state, data) {
+    try {
+      await this.$axios.post('providers/reset-password', data);
+
+      await this.$router.push('/auth/login/provider');
+    } catch (e) {
+      //
+    }
+  },
 }

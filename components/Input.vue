@@ -6,7 +6,9 @@
       :name="name"
       :type="type"
       :placeholder="placeholder"
-      v-model="value"
+      :disabled="disabled"
+      :value="content"
+      @input="handleInput"
       class="form-input"
     />
     <div class="form-element-error" v-if="error">
@@ -30,10 +32,17 @@ export default {
       type: String,
       required: true,
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    value: {
+      type: String,
+    }
   },
   data() {
     return {
-      value: null,
+      content: this.value,
     };
   },
   computed: {
@@ -43,10 +52,10 @@ export default {
         : null;
     },
   },
-  watch: {
-    value(value) {
-      this.$emit('input', value);
-    },
+  methods: {
+    handleInput(e) {
+      this.$emit('input', e.target.value);
+    }
   },
 };
 </script>

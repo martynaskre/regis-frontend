@@ -51,8 +51,6 @@ export default {
         email: this.email,
         password: this.password,
       });
-
-      console.log(this.$store.state.auth);
     },
   },
 };

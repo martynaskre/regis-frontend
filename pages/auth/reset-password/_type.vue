@@ -22,7 +22,7 @@
         name="passwordConfirmation"
         type="password"
         placeholder="Pakartokite slaptažodį"
-        v-model="password"
+        v-model="passwordConfirmation"
       />
       <button class="btn log" @click="submit">
         Nustatyti slaptažodį
@@ -55,7 +55,12 @@ export default {
   },
   methods: {
     async submit() {
-      // TODO
+      await this.$store.dispatch(`${this.type}s/resetPassword`, {
+        token: this.token,
+        email: this.email,
+        password: this.password,
+        passwordConfirmation: this.passwordConfirmation,
+      });
     },
   },
 };
