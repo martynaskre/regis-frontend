@@ -45,6 +45,21 @@
     margin: 10px;
     height: 50px;
     border-radius: 10px;
+    text-align: center;
+  }
+  button {
+    width: 100px;
+    height: 40px;
+    border-radius: 0px;
+    background-color: #4059ad;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 15px;
+    border-radius: 10px;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
   }
 }
 input {
@@ -61,17 +76,19 @@ input:focus {
 #Miestas {
   width: 100%;
 }
-button {
-  width: 55px;
-  aspect-ratio: 1;
-  background: #4059ad;
-  border-radius: 50%;
-  margin-right: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-left: 15px;
-  margin: 0;
+@media (min-width: 1100px) {
+  button {
+    width: 55px;
+    aspect-ratio: 1;
+    background: #4059ad;
+    border-radius: 50%;
+    margin-right: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 15px;
+    margin: 0;
+  }
 }
 .btn-square {
   width: 21px;

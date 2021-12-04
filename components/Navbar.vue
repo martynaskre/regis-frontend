@@ -7,7 +7,17 @@
     <div class="rect fifth"></div>
     <div class="navSpacing">
       <h1>Regis</h1>
-      <nuxt-link to="/auth/" class="btn"></nuxt-link>
+      <div class="buttons">
+        <nuxt-link
+          to="/timetable"
+          :style="{
+            backgroundImage:
+              'url(https://thumbs.dreamstime.com/b/calendar-icon-isolated-white-background-calender-symbol-vector-deadline-date-time-185768346.jpg)',
+          }"
+          class="btn"
+        ></nuxt-link>
+        <nuxt-link to="/auth/" class="btn"></nuxt-link>
+      </div>
     </div>
   </div>
 </template>
@@ -22,13 +32,19 @@ export default {};
   justify-content: space-between;
   align-items: center;
 }
+.buttons {
+  width: 160px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .btn {
-  position: relative;
   z-index: 11;
   cursor: pointer;
   width: 70px;
-  margin-right: 10px;
   aspect-ratio: 1;
+  margin-right: 10px;
   border-radius: 50%;
   border: 2px solid black;
   background-image: url('https://www.pngitem.com/pimgs/m/150-1503941_user-windows-10-user-icon-png-transparent-png.png');
