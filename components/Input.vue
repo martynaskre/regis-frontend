@@ -52,6 +52,11 @@ export default {
         : null;
     },
   },
+  watch: {
+    value(value) {
+      this.content = value;
+    }
+  },
   methods: {
     handleInput(e) {
       this.$emit('input', e.target.value);
