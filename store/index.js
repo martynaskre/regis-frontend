@@ -9,3 +9,9 @@ export const getters = {
     return state.auth.user;
   },
 };
+
+export const actions = {
+  async nuxtServerInit({ dispatch }) {
+    await dispatch('categories/fetchCategories');
+  }
+};
