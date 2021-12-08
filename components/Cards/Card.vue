@@ -1,10 +1,7 @@
 <template>
-  <button
-    class="card"
-    @click="handleClick"
-  >
+  <button class="card" @click="handleClick">
     <div class="cardName">
-      <slot/>
+      <slot />
     </div>
   </button>
 </template>
@@ -33,7 +30,7 @@ export default {
   box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .cardName {
-  font-size: 40px;
+  font-size: 35px;
   background: white;
   height: 80px;
   width: 100%;
