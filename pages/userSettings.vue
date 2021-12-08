@@ -44,19 +44,25 @@
     position: absolute;
     width: 50px;
     aspect-ratio: 1;
-    background: lightgray;
+    background-color: lightgray;
     border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid darkgray;
   }
   .top {
     top: 5.5%;
     right: 13%;
+    background-image: url('https://flyclipart.com/thumb2/gear-settings-setup-icon-292038.png');
   }
   .middle {
     right: 3.5%;
     top: 24%;
+    background-image: url('https://previews.123rf.com/images/muslumstock/muslumstock1808/muslumstock180806734/107878424-gross-pencil-vector-icon-isolated-on-transparent-background-gross-pencil-logo-concept.jpg');
   }
   .bot {
     right: 1%;
+    background-image: url('https://www.clipartmax.com/png/middle/112-1120537_exclamation-point-clip-art-transparent-background-exclamation-mark.png');
   }
 }
 .nameBox {

@@ -16,7 +16,7 @@
           }"
           class="btn"
         ></nuxt-link>
-        <nuxt-link to="/auth/" class="btn"></nuxt-link>
+        <nuxt-link to="/userSettings/" class="btn"></nuxt-link>
       </div>
     </div>
   </div>
