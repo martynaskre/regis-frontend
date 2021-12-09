@@ -1,6 +1,6 @@
 <template>
   <div class="providerContainer">
-    <slot/>
+    <div class="providerTextBox"></div>
   </div>
 </template>
 
@@ -11,5 +11,15 @@
   background: grey;
   border-radius: 20px;
   margin-top: 60px;
+  position: relative;
+}
+.providerTextBox {
+  position: absolute;
+  height: 250px;
+  margin-top: 25px;
+  width: 70%;
+  background-color: white;
+  right: 2%;
+  border-radius: 20px;
 }
 </style>

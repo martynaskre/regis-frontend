@@ -1,13 +1,11 @@
 <template>
   <div class="providersBox">
-    <slot/>
+    <CardsBusiness />
   </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style scoped>
