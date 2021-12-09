@@ -10,8 +10,17 @@
         <p v-if="businesses.length === 0">Dėja, paslaugų teikėjų rasti nepavyko...</p>
         <CardsBusiness v-else
                        v-for="business in businesses"
-                       :key="business.id">
+                       :key="business.id"
+                       :phoneNumber="'123'">
           {{ business.title }}
+
+          <template v-slot:address>
+            {{ business.addressStreet }} {{ business.addressHouseNumber }}, {{ business.addressCity }}, {{ business.addressCountry }} {{ business.addressPostCode }}
+          </template>
+
+          <template v-slot:description>
+            {{ business.shortDescription }}
+          </template>
         </CardsBusiness>
       </template>
     </CardsBusinessesContainer>

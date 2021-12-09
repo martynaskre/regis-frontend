@@ -53,6 +53,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
     '@nuxtjs/style-resources',
+    '@nuxtjs/google-fonts',
   ],
   modules: [
   ],
@@ -95,6 +96,13 @@ export default {
           user: { url: 'clients/user', method: 'get' },
           logout: false,
         },
+      },
+    },
+  },
+  googleFonts: {
+    families: {
+      Montserrat: {
+        wght: [400],
       },
     },
   },

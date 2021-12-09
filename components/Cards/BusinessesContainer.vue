@@ -1,6 +1,6 @@
 <template>
   <div class="providersBox">
-    <CardsBusiness />
+    <slot/>
   </div>
 </template>
 
