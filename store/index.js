@@ -5,6 +5,9 @@ export const getters = {
   providerLoggedIn(state) {
     return state.auth.loggedIn && state.auth.strategy === 'provider';
   },
+  loggedIn(state) {
+    return state.auth.loggedIn;
+  },
   user(state) {
     return state.auth.user;
   },

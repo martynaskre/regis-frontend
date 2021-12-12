@@ -6,17 +6,31 @@
     <div class="rect forth"></div>
     <div class="rect fifth"></div>
     <div class="navSpacing">
-      <h1>Regis</h1>
+      <nuxt-link to="/">
+        <h1>Regis</h1>
+      </nuxt-link>
       <div class="buttons">
-        <nuxt-link
-          to="/timetable"
-          :style="{
-            backgroundImage:
-              'url(https://thumbs.dreamstime.com/b/calendar-icon-isolated-white-background-calender-symbol-vector-deadline-date-time-185768346.jpg)',
-          }"
-          class="btn"
-        ></nuxt-link>
-        <nuxt-link to="/userSettings/" class="btn"></nuxt-link>
+        <template v-if="$store.getters.providerLoggedIn">
+          <nuxt-link
+            to="/business"
+            class="btn plus"
+          />
+          <nuxt-link
+            to="/calendar"
+            class="btn calendar"
+          />
+          <nuxt-link to="/profile/settings" class="btn user" />
+        </template>
+        <template v-if="$store.getters.clientLoggedIn">
+          <nuxt-link
+            to="/calendar"
+            class="btn calendar"
+          />
+          <nuxt-link to="/profile/settings" class="btn user" />
+        </template>
+        <nuxt-link v-else
+                   to="/auth/"
+                   class="btn user" />
       </div>
     </div>
   </div>
@@ -33,22 +47,47 @@ export default {};
   align-items: center;
 }
 .buttons {
-  width: 160px;
-  height: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .btn {
+  position: relative;
   z-index: 11;
   cursor: pointer;
-  width: 70px;
-  aspect-ratio: 1;
+  width: 60px;
+  height: 60px;
   margin-right: 10px;
   border-radius: 50%;
-  border: 2px solid black;
-  background-image: url('https://www.pngitem.com/pimgs/m/150-1503941_user-windows-10-user-icon-png-transparent-png.png');
-  background-size: cover;
+  background: #C4C4C4;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.btn.user:before {
+  content: '';
+  width: 59px;
+  height: 56px;
+  display: block;
+  background: url('~/assets/img/icons/account.png');
+}
+.btn.calendar:before {
+  content: '';
+  width: 52px;
+  height: 53px;
+  display: block;
+  background: url('~/assets/img/icons/calendar.png');
+  left: 5px;
+  position: relative;
+  top: 3px;
+}
+.btn.plus:before {
+  content: '';
+  width: 58px;
+  height: 56px;
+  display: block;
+  background: url('~/assets/img/icons/plus.png');
+  position: relative;
+  top: 3px;
+  left: 1px;
 }
 .rect {
   position: absolute;
@@ -91,5 +130,6 @@ h1 {
   z-index: 11;
   font-size: 50px;
   margin-left: 10px;
+  font-family: 'Montserrat', sans-serif;
 }
 </style>

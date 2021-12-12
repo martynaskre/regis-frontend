@@ -104,6 +104,9 @@ export default {
       Montserrat: {
         wght: [400],
       },
+      'Reem Kufi': {
+        wght: [400],
+      },
     },
   },
 };
