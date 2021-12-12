@@ -47,10 +47,12 @@ export default {
       if (category && this.keywords) {
         this.$router.push(`/category/${category.slug}?query=${this.keywords}`);
       } else {
-        this.$notify(
-          { group: "foo", title: "Success", text: "Your account was registered!" },
-          2000
-        ); // 2s
+        this.$notify({
+            group: 'error',
+            title: 'Klaida',
+            text: 'Nurodykite kategoriją ir paieškos raktažodį!',
+          }, 2000
+        );
       }
     }
   }
