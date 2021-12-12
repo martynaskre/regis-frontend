@@ -1,23 +1,23 @@
 <template>
   <div class="loginBackground">
-    <div class="rectangle1 border">1</div>
-    <div class="rectangle2 border">2</div>
-    <div class="rectangle3 border">3</div>
-    <div class="rectangle4 border">4</div>
-    <div class="rectangle5 border">5</div>
-    <div class="rectangle6 border">6</div>
-    <div class="rectangle7 border">7</div>
-    <div class="rectangle8 border">8</div>
-    <div class="rectangle9 border">9</div>
-    <div class="rectangle10 border">10</div>
-    <div class="rectangle11 border">11</div>
-    <div class="rectangle12 border">12</div>
-    <div class="rectangle13 border">13</div>
-    <div class="rectangle14 border">14</div>
-    <div class="rectangle15 border">15</div>
-    <div class="rectangle16 border">16</div>
-    <div class="rectangle17 border">17</div>
-    <div class="rectangle18 border">18</div>
+    <div class="rectangle1 border"></div>
+    <div class="rectangle2 border"></div>
+    <div class="rectangle3 border"></div>
+    <div class="rectangle4 border"></div>
+    <div class="rectangle5 border"></div>
+    <div class="rectangle6 border"></div>
+    <div class="rectangle7 border"></div>
+    <div class="rectangle8 border"></div>
+    <div class="rectangle9 border"></div>
+    <div class="rectangle10 border"></div>
+    <div class="rectangle11 border"></div>
+    <div class="rectangle12 border"></div>
+    <div class="rectangle13 border"></div>
+    <div class="rectangle14 border"></div>
+    <div class="rectangle15 border"></div>
+    <div class="rectangle16 border"></div>
+    <div class="rectangle17 border"></div>
+    <div class="rectangle18 border"></div>
   </div>
 </template>
 
