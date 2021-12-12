@@ -108,6 +108,9 @@ export default {
       'Reem Kufi': {
         wght: [400],
       },
+      Roboto: {
+        wght: [400],
+      },
     },
   },
 };
