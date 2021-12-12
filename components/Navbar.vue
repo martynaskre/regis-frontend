@@ -11,26 +11,15 @@
       </nuxt-link>
       <div class="buttons">
         <template v-if="$store.getters.providerLoggedIn">
-          <nuxt-link
-            to="/business"
-            class="btn plus"
-          />
-          <nuxt-link
-            to="/calendar"
-            class="btn calendar"
-          />
+          <nuxt-link to="/business" class="btn plus" />
+          <nuxt-link to="/calendar" class="btn calendar" />
           <nuxt-link to="/profile/settings" class="btn user" />
         </template>
         <template v-if="$store.getters.clientLoggedIn">
-          <nuxt-link
-            to="/calendar"
-            class="btn calendar"
-          />
+          <nuxt-link to="/calendar" class="btn calendar" />
           <nuxt-link to="/profile/settings" class="btn user" />
         </template>
-        <nuxt-link v-else
-                   to="/auth/"
-                   class="btn user" />
+        <nuxt-link v-else to="/auth/" class="btn user" />
       </div>
     </div>
   </div>
@@ -59,7 +48,7 @@ export default {};
   height: 60px;
   margin-right: 10px;
   border-radius: 50%;
-  background: #C4C4C4;
+  background: #c4c4c4;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .btn.user:before {
@@ -131,5 +120,6 @@ h1 {
   font-size: 50px;
   margin-left: 10px;
   font-family: 'Montserrat', sans-serif;
+  color: white;
 }
 </style>

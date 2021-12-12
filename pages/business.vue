@@ -7,35 +7,35 @@
         <div class="column">
           <div class="row">
             <h2>Event name:</h2>
-            <div class="input"></div>
+            <input class="input" />
           </div>
           <div class="row">
             <h2>Email:</h2>
-            <div class="input"></div>
+            <input class="input" />
           </div>
           <div class="row">
             <h2>Address:</h2>
-            <div class="input"></div>
+            <input class="input" />
           </div>
         </div>
         <div class="column">
           <div class="row">
-            <h2>Event category</h2>
-            <div class="input"></div>
+            <h2>Event category:</h2>
+            <input class="input" />
           </div>
           <div class="row">
             <h2>Phone:</h2>
-            <div class="input"></div>
+            <input class="input" />
           </div>
           <div class="row">
             <h2>ZIP:</h2>
-            <div class="input"></div>
+            <input class="input" />
           </div>
         </div>
       </div>
       <div class="descriptionBox">
-        <h2>Description</h2>
-        <div class="descriptionInput"></div>
+        <h2>Description:</h2>
+        <textarea class="descriptionInput" />
       </div>
       <button class="submitBTN">Submit</button>
     </div>
@@ -84,13 +84,13 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      h2 {
-      }
       .input {
         width: 80%;
         height: 80%;
         background-color: #dcdcdc;
         border-radius: 15px;
+        outline: none;
+        padding: 5px;
       }
     }
   }
@@ -110,8 +110,8 @@
     width: 85%;
     background-color: #dcdcdc;
     border-radius: 20px;
-  }
-  h2 {
+    outline: none;
+    padding: 10px;
   }
 }
 .submitBTN {
