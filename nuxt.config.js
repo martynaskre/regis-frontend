@@ -45,7 +45,8 @@ export default {
     ]
   },
   plugins: [
-    '~/plugins/axios',
+    { src: '~/plugins/axios' },
+    { src: '~/plugins/notifications', mode: 'client' },
   ],
   components: true,
   buildModules: [
