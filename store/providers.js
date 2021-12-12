@@ -35,9 +35,11 @@ export const actions = {
     try {
       await this.$axios.post('providers/reset-password', data);
 
-      await this.$router.push('/auth/login/provider');
+      return true;
     } catch (e) {
       //
     }
+
+    return false;
   },
 }

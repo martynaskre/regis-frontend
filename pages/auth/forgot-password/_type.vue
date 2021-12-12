@@ -44,6 +44,12 @@ export default {
       this.successful = await this.$store.dispatch(`${this.type}s/forgotPassword`, this.email);
 
       if (this.successful) {
+        this.$notify({
+            group: 'success',
+            title: 'Slaptažodžio atkūrimo laiškas išsiųstas!',
+          }, 3000
+        );
+
         this.disabled = true;
 
         this.$store.commit('errors/SET_ERRORS', {});

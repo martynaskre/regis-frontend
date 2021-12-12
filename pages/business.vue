@@ -17,6 +17,10 @@
             <h2>Address:</h2>
             <input class="input" />
           </div>
+          <div class="row">
+            <h2>Logo:</h2>
+            <input type="file">
+          </div>
         </div>
         <div class="column">
           <div class="row">
@@ -30,6 +34,10 @@
           <div class="row">
             <h2>ZIP:</h2>
             <input class="input" />
+          </div>
+          <div class="row">
+            <h2>Cover:</h2>
+            <input type="file">
           </div>
         </div>
       </div>
