@@ -1,9 +1,17 @@
 <template>
   <div class="background">
     <div class="searchBar">
-      <input type="text" id="Paslaugos" placeholder="Paslaugos" />
-      <input type="text" id="Miestas" placeholder="Miestas" />
-      <button>
+      <select id="Paslaugos" v-model="category">
+        <option value=''>Pasirinkite kategoriją</option>
+        <option v-for="category in categories"
+                @key="category.id"
+                :value="category.id"
+        >
+          {{ category.title }}
+        </option>
+      </select>
+      <input type="text" id="Miestas" placeholder="Raktažodis" v-model="keywords" />
+      <button @click="handleSearch">
         <div class="btn-square"></div>
         <div class="btn-triangle"></div>
       </button>
@@ -11,7 +19,38 @@
   </div>
 </template>
 
-<script></script>
+<script>
+export default {
+  props: {
+    defaultCategory: {
+      default: '',
+    },
+    defaultKeywords: {
+      default: null,
+    },
+  },
+  data() {
+    return {
+      category: this.defaultCategory,
+      keywords: this.defaultKeywords,
+    };
+  },
+  computed: {
+    categories() {
+      return this.$store.state.categories.list;
+    },
+  },
+  methods: {
+    handleSearch() {
+      const category = this.categories.find((cat) => cat.id === this.category);
+
+      if (category && this.keywords) {
+        this.$router.push(`/category/${category.slug}?query=${this.keywords}`);
+      }
+    }
+  }
+}
+</script>
 
 <style scoped>
 .background {
@@ -75,6 +114,10 @@ input:focus {
 }
 #Miestas {
   width: 100%;
+}
+#Miestas:focus,
+#Paslaugos:focus {
+  outline: 0;
 }
 @media (min-width: 1100px) {
   button {

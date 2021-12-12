@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar />
-    <searchBox />
+    <searchBox v-if="category" :defaultCategory="category.id" :defaultKeywords="this.query"/>
     <h2 v-if="category" class="text-center text-3xl mt-12 mb-1">{{ category.title }}</h2>
     <CardsBusinessesContainer>
       <p v-if="$fetchState.pending">Kraunami paslaugų teikėjai...</p>
@@ -32,13 +32,13 @@ export default {
   data() {
     return {
       category: null,
+      query: null,
       businesses: [],
     }
   },
-  mounted() {
-    this.slug = this.$route.params.slug;
-  },
   async fetch() {
+    this.query = this.$route.query.query;
+
     this.category = await this.$store.dispatch('categories/findCategoryBySlug', this.$route.params.slug);
 
     if (!this.category) {
@@ -47,6 +47,7 @@ export default {
 
     this.businesses = await this.$store.dispatch('businesses/fetchBusinesses', {
       category: this.category.id,
+      ...((this.query) && {query: this.query}),
     })
   },
 };
