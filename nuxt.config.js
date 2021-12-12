@@ -45,7 +45,8 @@ export default {
     ]
   },
   plugins: [
-    '~/plugins/axios',
+    { src: '~/plugins/axios' },
+    { src: '~/plugins/notifications', mode: 'client' },
   ],
   components: true,
   buildModules: [
@@ -105,6 +106,9 @@ export default {
         wght: [400],
       },
       'Reem Kufi': {
+        wght: [400],
+      },
+      Roboto: {
         wght: [400],
       },
     },

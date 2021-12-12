@@ -55,12 +55,22 @@ export default {
   },
   methods: {
     async submit() {
-      await this.$store.dispatch(`${this.type}s/resetPassword`, {
+      const response = await this.$store.dispatch(`${this.type}s/resetPassword`, {
         token: this.token,
         email: this.email,
         password: this.password,
         passwordConfirmation: this.passwordConfirmation,
       });
+
+      if (response) {
+        this.$notify({
+            group: 'success',
+            title: 'Slaptažodis pakeistas!',
+          }, 2000
+        );
+
+        await this.$router.push(`/auth/login/${this.type}`);
+      }
     },
   },
 };
