@@ -4,9 +4,36 @@
     <div class="mainContainer">
       <div class="userPhotoContainer">
         <div class="userPhoto"></div>
-        <button class="userSideButton bot"></button>
-        <button class="userSideButton middle"></button>
-        <button class="userSideButton top"></button>
+        <div class="userSideButton top">
+          <Dropdown>
+            <div class="sideButton">
+              <div class="sideButton-image">
+                <img src="~/assets/img/icons/settings.png">
+              </div>
+              <p>Settings</p>
+            </div>
+          </Dropdown>
+        </div>
+        <div class="userSideButton middle">
+          <Dropdown>
+            <div class="sideButton">
+              <div class="sideButton-image">
+                <img src="~/assets/img/icons/edit.png">
+              </div>
+              <p>Edit</p>
+            </div>
+          </Dropdown>
+        </div>
+        <div class="userSideButton bot">
+          <Dropdown>
+            <div class="sideButton">
+              <div class="sideButton-image">
+                <img src="~/assets/img/icons/alert.png">
+              </div>
+              <p>Report an issue</p>
+            </div>
+          </Dropdown>
+        </div>
       </div>
       <div class="nameBox"><h1>Vardenis Pavardenis</h1></div>
       <div class="descriptionBox">Description:</div>
@@ -23,6 +50,35 @@ export default {
 </script>
 
 <style lang="scss">
+.dropdown-opened .sideButton {
+  width: auto;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.dropdown-opened .sideButton p {
+  display: block;
+  padding: 0 40px 0 20px;
+}
+.sideButton {
+  height: 45px;
+  width: max-content;
+  background-color: #C4C4C4;
+  border-radius: 50%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.sideButton p {
+  display: none;
+}
+.sideButton .sideButton-image {
+  width: 45px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .mainContainer {
   margin: 0;
   width: 100%;
@@ -50,25 +106,18 @@ export default {
     position: absolute;
     width: 50px;
     aspect-ratio: 1;
-    background-color: lightgray;
-    border-radius: 50%;
-    background-size: cover;
-    background-position: center;
-    border: 2px solid darkgray;
   }
   .top {
-    top: 5.5%;
-    right: 13%;
-    background-image: url('https://flyclipart.com/thumb2/gear-settings-setup-icon-292038.png');
+    top: 3.5%;
+    right: 15%;
   }
   .middle {
-    right: 3.5%;
+    right: 6%;
     top: 24%;
-    background-image: url('https://previews.123rf.com/images/muslumstock/muslumstock1808/muslumstock180806734/107878424-gross-pencil-vector-icon-isolated-on-transparent-background-gross-pencil-logo-concept.jpg');
   }
   .bot {
-    right: 1%;
-    background-image: url('https://www.clipartmax.com/png/middle/112-1120537_exclamation-point-clip-art-transparent-background-exclamation-mark.png');
+    right: 5%;
+    top: 48%;
   }
 }
 .nameBox {
