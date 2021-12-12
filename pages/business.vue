@@ -19,7 +19,7 @@
           </div>
           <div class="row">
             <h2>Logo:</h2>
-            <input type="file">
+            <input type="file" />
           </div>
         </div>
         <div class="column">
@@ -37,7 +37,7 @@
           </div>
           <div class="row">
             <h2>Cover:</h2>
-            <input type="file">
+            <input type="file" />
           </div>
         </div>
       </div>
