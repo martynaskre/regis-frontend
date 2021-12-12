@@ -1,9 +1,9 @@
 <template>
   <div>
     <BackRectangles />
-    <RegisterCustomerRegister :customer=sliderPosition />
-    <RegisterProviderRegister :provider=sliderPosition />
-    <RegisterSlider  :slider=sliderPosition @ChangeBool="ChangeB($event)" />
+    <RegisterCustomerRegister :customer="sliderPosition" />
+    <RegisterProviderRegister :provider="sliderPosition" />
+    <RegisterSlider :slider="sliderPosition" @ChangeBool="ChangeB($event)" />
   </div>
 </template>
 
@@ -13,17 +13,12 @@ export default {
   data() {
     return {
       sliderPosition: true,
-    }
+    };
   },
-  methods:{
+  methods: {
     ChangeB(sliderPosition) {
-      this.sliderPosition=!sliderPosition;
+      this.sliderPosition = !sliderPosition;
     },
   },
-}
+};
 </script>
-
-<style scoped>
-@import '~/assets/css/LoginStyling.css';
-@import '~/assets/css/RegisterStyling.css';
-</style>

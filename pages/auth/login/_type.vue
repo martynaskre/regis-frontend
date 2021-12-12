@@ -1,24 +1,26 @@
 <template>
   <div>
     <BackRectangles />
-    <div class="container">
-      <h1>REGIS</h1>
-      <Input
-        class="logInput"
-        name="email"
-        type="text"
-        placeholder="El. paštas"
-        v-model="email"
-      />
-      <Input
-        class="logInput"
-        name="password"
-        type="password"
-        placeholder="Slaptažodis"
-        v-model="password"
-      />
-      <nuxt-link :to="passwordResetUrl">Pamiršote slaptažodį?</nuxt-link>
-      <button class="btn log" @click="submit">Prisijungti</button>
+    <div class="centerContainer">
+      <div class="container">
+        <h1>REGIS</h1>
+        <Input
+          class="logInput"
+          name="email"
+          type="text"
+          placeholder="El. paštas"
+          v-model="email"
+        />
+        <Input
+          class="logInput"
+          name="password"
+          type="password"
+          placeholder="Slaptažodis"
+          v-model="password"
+        />
+        <nuxt-link :to="passwordResetUrl">Pamiršote slaptažodį?</nuxt-link>
+        <button class="btn log" @click="submit">Prisijungti</button>
+      </div>
     </div>
   </div>
 </template>
@@ -36,7 +38,7 @@ export default {
   computed: {
     passwordResetUrl() {
       return '/auth/forgot-password/' + this.type;
-    }
+    },
   },
   mounted() {
     this.type = this.$route.params.type;
@@ -70,5 +72,8 @@ export default {
   position: relative;
   text-align: center;
   width: 60%;
+}
+h1 {
+  margin-top: 0;
 }
 </style>
