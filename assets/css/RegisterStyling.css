@@ -193,8 +193,8 @@ h4 {
   }
   .Customer {
     left: calc((100% - 300px) / 2);
-    top: calc((100% - 500px) / 2);
-    height: 500px;
+    top: calc((100% - 400px) / 2);
+    height: 400px;
     width: 300px;
   }
   .sliderBtn {
@@ -203,7 +203,7 @@ h4 {
   }
   .btnLeft {
     left: calc((100% - 300px) / 2 + 265px);
-    top: calc(50% - 245px);
+    top: calc(50% - 195px);
   }
   .btnRight {
     left: calc(50% - 145px);
@@ -225,7 +225,6 @@ h4 {
   }
   h2 {
     font-size: 25px;
-    margin-top: 20px;
   }
   h3 {
     font-size: 18px;
