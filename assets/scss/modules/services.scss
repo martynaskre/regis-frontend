@@ -1,0 +1,36 @@
+.services {
+  .service {
+    position: relative;
+    background-color: white;
+    margin: 2rem;
+    padding: 1.5rem 2rem;
+    border-radius: 10px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: -1rem;
+      top: -1rem;
+      width: calc(100% + 2rem);
+      height: calc(100% + 2rem);
+      background-color: $secondary-gray;
+      border-radius: 10px;
+      z-index: -1;
+    }
+
+    .service-action {
+      display: block;
+      width: 45px;
+      height: 45px;
+      background-color: $primary-yellow;
+      border-radius: 50%;
+      position: absolute;
+      right: calc(-1rem - 10px);
+      top: calc(-1rem - 10px);
+    }
+
+    .service-description {
+      margin-bottom: 5rem;
+    }
+  }
+}

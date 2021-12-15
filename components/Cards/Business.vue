@@ -13,11 +13,6 @@
       <p class="providerDescription">
         <slot name="description"/>
       </p>
-      <div class="selectContainer">
-        <select class="servicesSelect">
-          <option>Rinktis paslaugą:</option>
-        </select>
-      </div>
     </div>
   </div>
 </template>

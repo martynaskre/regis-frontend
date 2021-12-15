@@ -42,6 +42,7 @@ export default {
     scss: [
       '~assets/scss/mixins.scss',
       '~assets/scss/variables.scss',
+      '~assets/scss/app.scss',
     ]
   },
   plugins: [

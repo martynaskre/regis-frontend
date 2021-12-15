@@ -1,7 +1,7 @@
 <template>
   <div>
     <BackRectangles />
-    <div class="container">
+    <div class="login-container">
       <h1>REGIS</h1>
       <Input
         class="logInput"

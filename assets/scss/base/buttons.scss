@@ -1,0 +1,37 @@
+.button {
+  border-radius: 5px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  text-align: center;
+  transition: .3s;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  &:hover,
+  &:focus {
+    opacity: .8;
+  }
+
+  &.button-large {
+    font-size: 2rem;
+    padding: 1rem 6rem;
+  }
+
+  &.button-rounded {
+    border-radius: 30px;
+  }
+}
+
+.button-warning {
+  background-color: $primary-yellow;
+  color: #000;
+}
+
+.button-success {
+  background-color: $primary-green;
+  color: #000;
+}
+
+.button-info {
+  background-color: $primary-blue;
+  color: #000;
+}

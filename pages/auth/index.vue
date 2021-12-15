@@ -2,7 +2,7 @@
   <div>
     <BackRectangles />
     <div class="centerContainer">
-      <div class="container">
+      <div class="login-container">
         <h1>REGIS</h1>
         <nuxt-link to="/auth/login/client" class="btn">Client</nuxt-link>
         <nuxt-link to="/auth/login/provider" class="btn"
