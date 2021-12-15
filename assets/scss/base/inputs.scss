@@ -47,6 +47,22 @@
     }
   }
 
+  &.schedule-form-element {
+    .form-input {
+      background-color: $primary-blue;
+      width: 100%;
+      border-radius: 5px;
+      padding: 0 0.75rem;
+      box-sizing: border-box;
+      height: 48px;
+      font-size: 30px;
+
+      @include placeholder {
+        color: rgba(0, 0, 0, .2);
+      }
+    }
+  }
+
   .form-element-error {
     text-align: left;
     color: #ff5714;

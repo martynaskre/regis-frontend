@@ -65,9 +65,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    value: {
-      type: String,
-    },
+    value: {},
     businessInput: {
       type: Boolean,
       default: false,
@@ -79,7 +77,11 @@ export default {
     options: {
       type: Array,
       default: () => [],
-    }
+    },
+    scheduleInput: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -101,6 +103,10 @@ export default {
 
       if (this.error) {
         classes.push('has-error')
+      }
+
+      if (this.scheduleInput) {
+        classes.push('schedule-form-element')
       }
 
       return classes.join(' ');
