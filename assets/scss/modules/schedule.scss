@@ -1,6 +1,10 @@
 .schedule {
   margin-top: 3rem;
 
+  .grid-of-3 {
+    gap: 10%;
+  }
+
   .schedule-add-container {
     margin-top: 3rem;
     position: relative;

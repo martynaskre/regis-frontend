@@ -6,7 +6,7 @@
         Išsaugoti
       </button>
     </div>
-    <div class="schedule container container-sm">
+    <div class="schedule container container-md">
       <div v-for="(scheduleEntry, index) in scheduleEntries"
            :key="index"
            class="grid-rows grid-of-3"

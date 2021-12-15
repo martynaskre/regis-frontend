@@ -1,6 +1,10 @@
 .container {
   margin: 2rem auto;
 
+  &.container-md {
+    width: 90%;
+  }
+
   &.container-sm {
     width: 70%;
   }
