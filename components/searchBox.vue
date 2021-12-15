@@ -1,19 +1,25 @@
 <template>
-  <div class="background">
+  <div class="searchBoxBackground">
     <div class="searchBar">
       <select id="Paslaugos" v-model="category">
-        <option value=''>Pasirinkite kategoriją</option>
-        <option v-for="category in categories"
-                @key="category.id"
-                :value="category.id"
+        <option value="">Pasirinkite kategoriją</option>
+        <option
+          :v-for="category in categories"
+          @key="category.id"
+          :value="category.id"
         >
           {{ category.title }}
         </option>
       </select>
-      <input type="text" id="Miestas" placeholder="Raktažodis" v-model="keywords" />
+      <input
+        type="text"
+        id="Miestas"
+        placeholder="Raktažodis"
+        v-model="keywords"
+      />
       <button @click="handleSearch">
-        <div class="btn-square"></div>
-        <div class="btn-triangle"></div>
+        <div class="btn-squaree"></div>
+        <div class="btn-trianglee"></div>
       </button>
     </div>
   </div>
@@ -47,23 +53,25 @@ export default {
       if (category && this.keywords) {
         this.$router.push(`/category/${category.slug}?query=${this.keywords}`);
       } else {
-        this.$notify({
+        this.$notify(
+          {
             group: 'error',
             title: 'Klaida',
             text: 'Nurodykite kategoriją ir paieškos raktažodį!',
-          }, 2000
+          },
+          2000
         );
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped>
-.background {
+.searchBoxBackground {
   display: flex;
   background-color: #6b9ac4;
-  height: 550px;
+  height: 450px;
   width: 100%;
   justify-content: center;
   align-items: center;
@@ -74,43 +82,34 @@ export default {
   border-radius: 15px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: white;
-  z-index: 11;
-  justify-content: center;
   padding: 10px;
 }
-@media (max-width: 1100px) {
-  .searchBar {
-    height: 200px;
-    width: 40%;
-    background-color: transparent;
-    flex-direction: column;
-  }
-  #Miestas,
-  #Paslaugos {
-    margin: 10px;
-    height: 50px;
-    border-radius: 10px;
-    text-align: center;
-  }
-  button {
-    width: 100px;
-    height: 40px;
-    border-radius: 0px;
-    background-color: #4059ad;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-left: 15px;
-    border-radius: 10px;
-    text-align: center;
-    align-content: center;
-    justify-content: center;
-  }
+button {
+  position: relative;
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: #4059ad;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+  padding-left: 15px;
 }
-input {
-  z-index: 11;
-  margin: 0;
+.btn-squaree {
+  position: relative;
+  width: 21px;
+  height: 6px;
+  background: #ffffff;
+}
+.btn-trianglee {
+  width: 30px;
+  aspect-ratio: 1;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 15px solid #ffffff;
 }
 input:focus {
   outline: none;
@@ -122,34 +121,96 @@ input:focus {
 #Miestas {
   width: 100%;
 }
+#Miestas,
+#Paslaugos {
+  margin: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
 #Miestas:focus,
 #Paslaugos:focus {
   outline: 0;
 }
-@media (min-width: 1100px) {
+@media (max-width: 1100px) {
+  .searchBoxBackground {
+    height: 300px;
+  }
+  .searchBar {
+    height: 200px;
+    width: 600px;
+    background-color: transparent;
+    flex-direction: column;
+  }
+  #Miestas,
+  #Paslaugos {
+    margin: 10px;
+    width: 400px;
+    height: 40px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+  }
   button {
-    width: 55px;
-    aspect-ratio: 1;
-    background: #4059ad;
-    border-radius: 50%;
-    margin-right: 50px;
+    width: 100px;
+    height: 40px;
+    background-color: #4059ad;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-left: 15px;
-    margin: 0;
+    padding-left: 5px;
+    border-radius: 10px;
+  }
+  .btn-squaree {
+    position: relative;
+    width: 21px;
+    height: 6px;
+    background: #ffffff;
+  }
+  .btn-trianglee {
+    width: 20px;
+    aspect-ratio: 1;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 20px solid #ffffff;
   }
 }
-.btn-square {
-  width: 21px;
-  height: 7px;
-  background: #ffffff;
-}
-.btn-triangle {
-  width: 26px;
-  aspect-ratio: 1;
-  border-top: 13px solid transparent;
-  border-bottom: 13px solid transparent;
-  border-left: 13px solid #ffffff;
+@media (max-width: 500px) {
+  button {
+    height: 25px;
+    width: 50px;
+    background: #4059ad;
+    border-radius: 5px;
+    margin-right: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5px;
+    margin: 0;
+  }
+  .btn-squaree {
+    width: 15px;
+    height: 4px;
+    background: #ffffff;
+  }
+  .btn-trianglee {
+    width: 10px;
+    aspect-ratio: 1;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid #ffffff;
+  }
+  .searchBoxBackground {
+    height: 170px;
+  }
+  #Paslaugos,
+  #Miestas {
+    width: 180px;
+    height: 25px;
+    border-radius: 5px;
+    font-size: 15px;
+  }
+  .searchBar {
+    height: 150px;
+  }
 }
 </style>

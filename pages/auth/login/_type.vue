@@ -68,11 +68,6 @@ export default {
   margin-bottom: calc(10px + 0.5vw);
   color: white;
 }
-.logInput {
-  position: relative;
-  text-align: center;
-  width: 60%;
-}
 h1 {
   margin-top: 0;
 }

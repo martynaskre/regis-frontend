@@ -122,4 +122,56 @@ h1 {
   font-family: 'Montserrat', sans-serif;
   color: white;
 }
+
+@media (max-width: 1100px) {
+  .rect {
+    height: 65px;
+  }
+  .btn {
+    height: 45px;
+    width: 45px;
+  }
+  .btn.btn.user:before {
+    width: 45px;
+    height: 43px;
+    background-size: cover;
+  }
+  .btn.calendar:before {
+    width: 25px;
+    height: 25px;
+    top: 2px;
+    left: 3px;
+    background-size: cover;
+  }
+  h1 {
+    line-height: 65px;
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 500px) {
+  .rect {
+    height: 45px;
+  }
+  .btn {
+    height: 30px;
+    width: 30px;
+  }
+  .btn.btn.user:before {
+    width: 29px;
+    height: 29px;
+    background-size: cover;
+  }
+  .btn.calendar:before {
+    width: 25px;
+    height: 25px;
+    top: 2px;
+    left: 3px;
+    background-size: cover;
+  }
+  h1 {
+    line-height: 45px;
+    font-size: 30px;
+  }
+}
 </style>

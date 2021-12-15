@@ -2,24 +2,28 @@
   <div :class="ContainerProvider">
     <h2>Register as a <br />service provider</h2>
     <Input
+      class="logInput"
       name="firstName"
       type="text"
       placeholder="First name"
       v-model="firstName"
     />
     <Input
+      class="logInput"
       name="lastName"
       type="text"
       placeholder="Last name"
       v-model="lastName"
     />
     <Input
+      class="logInput"
       name="password"
       type="password"
       placeholder="Password"
       v-model="password"
     />
     <Input
+      class="logInput"
       name="passwordConfirmation"
       type="password"
       placeholder="Password confirmation"
@@ -44,14 +48,22 @@
       />
       <h4>Juridical Person</h4>
     </div>
-    <Input name="email" type="email" placeholder="Email" v-model="email" />
     <Input
+      class="logInput"
+      name="email"
+      type="email"
+      placeholder="Email"
+      v-model="email"
+    />
+    <Input
+      class="logInput"
       name="phoneNumber"
       type="text"
       placeholder="Phone number"
       v-model="phoneNumber"
     />
     <Input
+      class="logInput"
       v-if="isLegalEntity === '1'"
       name="companyName"
       type="text"
@@ -59,12 +71,14 @@
       v-model="companyName"
     />
     <Input
+      class="logInput"
       name="code"
       type="text"
       :placeholder="codePlaceholder"
       v-model="code"
     />
     <Input
+      class="logInput"
       name="vatCode"
       type="text"
       placeholder="VAT code"

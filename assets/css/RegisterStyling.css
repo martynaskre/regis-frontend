@@ -93,6 +93,7 @@ h2 {
 input {
   margin: calc(3px + 0.1vw);
   box-shadow: 10px;
+  width: 100%;
 }
 .btnReg {
   width: 60%;
@@ -170,7 +171,7 @@ h4 {
     border-left: 23px solid #eff2f1;
   }
   h2 {
-    font-size: 25px;
+    font-size: 32px;
   }
   h3 {
     font-size: 18px;
