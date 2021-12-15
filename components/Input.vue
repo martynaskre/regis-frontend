@@ -1,6 +1,5 @@
 <template>
-  <div class="form-element"
-       :class="{ 'has-error': error }">
+  <div class="form-element" :class="{ 'has-error': error }">
     <input
       :id="name"
       :name="name"
@@ -38,7 +37,7 @@ export default {
     },
     value: {
       type: String,
-    }
+    },
   },
   data() {
     return {
@@ -55,12 +54,12 @@ export default {
   watch: {
     value(value) {
       this.content = value;
-    }
+    },
   },
   methods: {
     handleInput(e) {
       this.$emit('input', e.target.value);
-    }
+    },
   },
 };
 </script>
@@ -83,6 +82,26 @@ export default {
 
     .form-input {
       margin-bottom: 0;
+    }
+  }
+}
+@media (max-width: 1100px) {
+  .form-element {
+    .form-input {
+      width: 300px;
+      height: 30px;
+      font-size: 20px;
+      margin: 0 0 12px;
+    }
+  }
+}
+@media (max-width: 500px) {
+  .form-element {
+    .form-input {
+      width: 200px;
+      height: 25px;
+      font-size: 15px;
+      margin: 0 0 12px;
     }
   }
 }

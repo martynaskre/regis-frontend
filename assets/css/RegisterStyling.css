@@ -46,7 +46,6 @@
 }
 .sliderBtn {
   position: absolute;
-  top: 1%;
   border-radius: 50%;
   z-index: 21;
   width: 3vw;
@@ -55,9 +54,11 @@
   cursor: pointer;
 }
 .btnRight {
+  top: 1%;
   right: 1%;
 }
 .btnLeft {
+  top: 1%;
   left: 1%;
 }
 .triangle {
@@ -122,4 +123,114 @@ h3 {
 h4 {
   font-family: Roboto;
   font-size: calc(8px + 0.7vw);
+}
+
+@media (max-width: 1100px) {
+  .RegisterSlider {
+    visibility: hidden;
+    position: initial;
+    transition-duration: 0s;
+  }
+  .Provider {
+    left: calc((100% - 400px) / 2);
+    top: calc((100% - 600px) / 2);
+    height: 600px;
+    width: 400px;
+  }
+  .Customer {
+    left: calc((100% - 400px) / 2);
+    top: calc((100% - 500px) / 2);
+    height: 500px;
+    width: 400px;
+  }
+  .sliderBtn {
+    visibility: visible;
+    width: 35px;
+  }
+  .btnLeft {
+    left: calc((100% - 400px) / 2 + 360px);
+    top: calc(50% - 245px);
+  }
+  .btnRight {
+    left: calc(50% - 195px);
+    top: calc(50% - 295px);
+  }
+  .triangle {
+    position: absolute;
+    width: 25px;
+    aspect-ratio: 1;
+    z-index: 22;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+  }
+  .triangleRight {
+    border-right: 23px solid #eff2f1;
+  }
+  .triangleLeft {
+    border-left: 23px solid #eff2f1;
+  }
+  h2 {
+    font-size: 25px;
+  }
+  h3 {
+    font-size: 18px;
+  }
+  h4 {
+    font-size: 13px;
+  }
+}
+@media (max-width: 500px) {
+  .RegisterSlider {
+    visibility: hidden;
+    position: initial;
+    transition-duration: 0s;
+  }
+  .Provider {
+    left: calc((100% - 300px) / 2);
+    top: calc((100% - 550px) / 2);
+    height: 550px;
+    width: 300px;
+  }
+  .Customer {
+    left: calc((100% - 300px) / 2);
+    top: calc((100% - 500px) / 2);
+    height: 500px;
+    width: 300px;
+  }
+  .sliderBtn {
+    visibility: visible;
+    width: 30px;
+  }
+  .btnLeft {
+    left: calc((100% - 300px) / 2 + 265px);
+    top: calc(50% - 245px);
+  }
+  .btnRight {
+    left: calc(50% - 145px);
+    top: calc(50% - 270px);
+  }
+  .triangle {
+    position: absolute;
+    width: 20px;
+    aspect-ratio: 1;
+    z-index: 22;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+  }
+  .triangleRight {
+    border-right: 18px solid #eff2f1;
+  }
+  .triangleLeft {
+    border-left: 18px solid #eff2f1;
+  }
+  h2 {
+    font-size: 25px;
+    margin-top: 20px;
+  }
+  h3 {
+    font-size: 18px;
+  }
+  h4 {
+    font-size: 13px;
+  }
 }

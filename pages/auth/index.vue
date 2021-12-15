@@ -22,15 +22,6 @@ export default {
 
 <style scoped>
 @import '~/assets/css/LoginStyling.css';
-.centerContainer {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .btn {
   width: 60%;
   height: 12%;
