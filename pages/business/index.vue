@@ -16,13 +16,13 @@
     </CardsBusinessesContainer>
     <div class="container container-sm grid-rows grid-of-3">
       <button class="button button-warning" @click="() => $router.push('/business/verslas-nuo-nulio/edit')">
-        Edit business info
+        Redaguoti bazinę informaciją
       </button>
       <button class="button button-warning" @click="() => $router.push('/business/verslas-nuo-nulio/services')">
-        Edit services info
+        Redaguoti paslaugas
       </button>
       <button class="button button-warning" @click="() => $router.push('/business/verslas-nuo-nulio/schedule')">
-        Edit schedule info
+        Redaguoti darbo laiką
       </button>
     </div>
   </div>
