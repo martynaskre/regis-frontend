@@ -64,9 +64,9 @@ export default {};
   height: 53px;
   display: block;
   background: url('~/assets/img/icons/calendar.png');
-  left: 5px;
+  left: 1px;
+  top: 1px;
   position: relative;
-  top: 3px;
 }
 .btn.plus:before {
   content: '';
@@ -75,8 +75,6 @@ export default {};
   display: block;
   background: url('~/assets/img/icons/plus.png');
   position: relative;
-  top: 3px;
-  left: 1px;
 }
 .rect {
   position: absolute;
@@ -137,10 +135,14 @@ h1 {
     background-size: cover;
   }
   .btn.calendar:before {
-    width: 25px;
-    height: 25px;
-    top: 2px;
-    left: 3px;
+    width: 38px;
+    height: 38px;
+    background-size: cover;
+  }
+  .btn.plus:before {
+    width: 42px;
+    height: 42px;
+    left: -1px;
     background-size: cover;
   }
   h1 {
@@ -160,13 +162,19 @@ h1 {
   .btn.btn.user:before {
     width: 29px;
     height: 29px;
+    position: relative;
+    left: -0.5px;
     background-size: cover;
   }
   .btn.calendar:before {
-    width: 25px;
-    height: 25px;
-    top: 2px;
-    left: 3px;
+    width: 26px;
+    height: 26px;
+    top: -0.5px;
+    background-size: cover;
+  }
+  .btn.plus:before {
+    width: 28px;
+    height: 28px;
     background-size: cover;
   }
   h1 {
