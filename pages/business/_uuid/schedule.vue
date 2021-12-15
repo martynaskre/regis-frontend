@@ -77,7 +77,7 @@ export default {
       }
     },
     submit() {
-      //TODO
+      this.$router.push('/business');
     }
   }
 }

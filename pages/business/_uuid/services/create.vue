@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     submit() {
-      //TODO
+      this.$router.push('/business/verslas-nuo-nulio/services');
     },
   },
 };

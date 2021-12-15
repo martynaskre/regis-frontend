@@ -3,7 +3,7 @@
     <Navbar/>
     <CardsBusinessesContainer>
       <CardsBusiness :phoneNumber="'test'">
-        Test
+        Verslas nuo cibulio
 
         <template v-slot:address>
           Adresas

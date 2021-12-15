@@ -110,7 +110,7 @@ export default {
       this.cover = (e.target.files || e.dataTransfer.files)[0];
     },
     submit() {
-      // TODO
+      this.$router.push('/business');
     }
   },
 }
