@@ -1,15 +1,45 @@
 <template>
-  <div class="form-element" :class="{ 'has-error': error }">
-    <input
-      :id="name"
-      :name="name"
-      :type="type"
-      :placeholder="placeholder"
-      :disabled="disabled"
-      :value="content"
-      @input="handleInput"
-      class="form-input"
-    />
+  <div class="form-element" :class="classes">
+    <div class="form-inner">
+      <template v-if="label">
+        <label :for="name">{{ label }}</label>
+      </template>
+      <textarea v-if="type === 'textarea'"
+                :id="name"
+                :name="name"
+                :placeholder="placeholder"
+                :disabled="disabled"
+                :value="content"
+                @input="handleInput"
+                class="form-input"
+      />
+      <select v-else-if="type === 'select'"
+              :id="name"
+              :name="name"
+              :disabled="disabled"
+              :value="content"
+              @input="handleInput"
+              class="form-input"
+      >
+        <option value="">{{ placeholder }}</option>
+        <option v-for="(option, index) in options"
+                :key="index"
+                :value="index">
+          {{ option }}
+        </option>
+      </select>
+      <input
+        v-else
+        :id="name"
+        :name="name"
+        :type="type"
+        :placeholder="placeholder"
+        :disabled="disabled"
+        :value="content"
+        @input="handleInput"
+        class="form-input"
+      />
+    </div>
     <div class="form-element-error" v-if="error">
       {{ error }}
     </div>
@@ -29,7 +59,7 @@ export default {
     },
     placeholder: {
       type: String,
-      required: true,
+      default: '',
     },
     disabled: {
       type: Boolean,
@@ -38,6 +68,18 @@ export default {
     value: {
       type: String,
     },
+    businessInput: {
+      type: Boolean,
+      default: false,
+    },
+    label: {
+      type: String,
+      default: '',
+    },
+    options: {
+      type: Array,
+      default: () => [],
+    }
   },
   data() {
     return {
@@ -50,6 +92,19 @@ export default {
         ? this.$store.state.errors.errors[this.name]
         : null;
     },
+    classes() {
+      const classes = [];
+
+      if (this.businessInput) {
+        classes.push('business-form-element')
+      }
+
+      if (this.error) {
+        classes.push('has-error')
+      }
+
+      return classes.join(' ');
+    },
   },
   watch: {
     value(value) {
@@ -59,50 +114,8 @@ export default {
   methods: {
     handleInput(e) {
       this.$emit('input', e.target.value);
+      this.$emit('change', e);
     },
   },
 };
 </script>
-
-<style lang="scss">
-.form-element {
-  .form-input {
-    text-align: center;
-    font-size: calc(12px + 0.8vw);
-    margin: 0 0 calc(10px + 0.5vw);
-  }
-
-  .form-element-error {
-    text-align: left;
-    color: #ff5714;
-  }
-
-  &.has-error {
-    margin-bottom: 1rem;
-
-    .form-input {
-      margin-bottom: 0;
-    }
-  }
-}
-@media (max-width: 1100px) {
-  .form-element {
-    .form-input {
-      width: 300px;
-      height: 30px;
-      font-size: 20px;
-      margin: 0 0 12px;
-    }
-  }
-}
-@media (max-width: 500px) {
-  .form-element {
-    .form-input {
-      width: 200px;
-      height: 25px;
-      font-size: 15px;
-      margin: 0 0 12px;
-    }
-  }
-}
-</style>

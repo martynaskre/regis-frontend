@@ -1,7 +1,7 @@
 <template>
   <div>
     <BackRectangles />
-    <div class="container">
+    <div class="login-container">
       <h1>REGIS</h1>
       <p v-if="successful" class="mb-2">Slaptažodžio atkūrimo laiškas išsiųstas į el. paštą.</p>
       <Input
