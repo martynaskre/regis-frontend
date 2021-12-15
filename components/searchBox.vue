@@ -4,11 +4,11 @@
       <select id="Paslaugos" v-model="category">
         <option value="">Pasirinkite kategoriją</option>
         <option
-          :v-for="category in categories"
-          :key="category.id"
-          :value="category.id"
+          v-for="(categoryEntry, index) in categories"
+          :key="index"
+          :value="categoryEntry.id"
         >
-          {{ category.title }}
+          {{ categoryEntry.title }}
         </option>
       </select>
       <input
@@ -45,6 +45,9 @@ export default {
     categories() {
       return this.$store.state.categories.list;
     },
+  },
+  mounted() {
+    console.log(this.categories);
   },
   methods: {
     handleSearch() {
