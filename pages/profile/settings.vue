@@ -10,13 +10,16 @@
           <Dropdown>
             <div class="sideButton">
               <div class="sideButton-image">
-                <img src="~/assets/img/icons/settings.png">
+                <img src="~/assets/img/icons/settings.png" />
               </div>
               <p>Settings</p>
             </div>
             <template v-slot:content>
               <div class="text-center">
-                <button class="button button-rounded button-wide button-warning" @click="logout">
+                <button
+                  class="button button-rounded button-wide button-warning"
+                  @click="logout"
+                >
                   Atsijungti
                 </button>
               </div>
@@ -27,17 +30,22 @@
           <Dropdown>
             <div class="sideButton">
               <div class="sideButton-image">
-                <img src="~/assets/img/icons/alert.png">
+                <img src="~/assets/img/icons/alert.png" />
               </div>
               <p>Report an issue</p>
             </div>
             <template v-slot:content>
-              <Input name="shortDescription"
-                     type="textarea"
-                     v-model="bugReport"
-                     :businessInput="true" />
+              <Input
+                name="shortDescription"
+                type="textarea"
+                v-model="bugReport"
+                :businessInput="true"
+              />
               <div class="text-center">
-                <button class="button button-rounded button-wide button-warning" @click="report">
+                <button
+                  class="button button-rounded button-wide button-warning"
+                  @click="report"
+                >
                   Pranešti
                 </button>
               </div>
@@ -80,7 +88,7 @@ export default {
         },
         2000
       );
-    }
+    },
   },
 };
 </script>
@@ -101,7 +109,7 @@ export default {
 .sideButton {
   height: 45px;
   width: max-content;
-  background-color: #C4C4C4;
+  background-color: #c4c4c4;
   border-radius: 50%;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -132,10 +140,9 @@ export default {
   position: relative;
   .userPhoto {
     width: 250px;
-    height: 250px;
     aspect-ratio: 1;
     border-radius: 50%;
-    background-color: #C4C4C4;
+    background-color: #c4c4c4;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -162,7 +169,7 @@ export default {
   width: 45%;
   height: 50px;
   border-radius: 20px;
-  background: #C4C4C4;
+  background: #c4c4c4;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -189,5 +196,84 @@ export default {
   background: lightgray;
   margin: 10px;
   border-radius: 20px;
+}
+
+@media (max-width: 1100px) {
+  .userPhotoContainer {
+    width: 250px;
+
+    .userPhoto {
+      width: 150px;
+      img {
+        width: 130px;
+      }
+    }
+    .userSideButton {
+      width: 35px;
+      height: 35px;
+    }
+    .sideButton-image {
+      width: 35px;
+    }
+    .sideButton {
+      height: 35px;
+    }
+  }
+  .nameBox {
+    width: 45%;
+    height: 40px;
+    border-radius: 15px;
+    background: #c4c4c4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      font-size: 18px;
+      font-weight: normal;
+      margin-top: 0;
+    }
+
+    margin: 2rem 10px;
+  }
+}
+@media (max-width: 500px) {
+  .userPhotoContainer {
+    width: 150px;
+
+    .userPhoto {
+      width: 100px;
+      img {
+        width: 80px;
+      }
+    }
+    .userSideButton {
+      width: 25px;
+      height: 25px;
+    }
+    .sideButton-image {
+      width: 25px;
+    }
+    .sideButton {
+      height: 25px;
+    }
+  }
+  .nameBox {
+    width: 45%;
+    height: 30px;
+    border-radius: 10px;
+    background: #c4c4c4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      font-size: 15px;
+      font-weight: normal;
+      margin-top: 0;
+    }
+
+    margin: 2rem 10px;
+  }
 }
 </style>

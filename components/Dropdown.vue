@@ -1,13 +1,10 @@
 <template>
-  <div class="dropdown"
-       v-bind:class="{ 'dropdown-opened': opened }"
-  >
-    <div class="dropdown-header"
-         @click="toggleDropdown">
-      <slot/>
+  <div class="dropdown" v-bind:class="{ 'dropdown-opened': opened }">
+    <div class="dropdown-header" @click="toggleDropdown">
+      <slot />
     </div>
     <div class="dropdown-content">
-      <slot name="content"/>
+      <slot name="content" />
     </div>
   </div>
 </template>
@@ -16,7 +13,7 @@
 import mitt from 'mitt';
 
 const emitter = mitt();
-const closeEvent = 'closeDropdowns'
+const closeEvent = 'closeDropdowns';
 
 export default {
   data() {
@@ -41,9 +38,9 @@ export default {
           exclude: this.id,
         });
       }
-    }
+    },
   },
-}
+};
 </script>
 
 <style lang="scss">
@@ -53,12 +50,12 @@ export default {
   padding: 20px;
 
   &.dropdown-opened {
-    background-color: #4059AD;
+    background-color: #4059ad;
     border-top-right-radius: 50px;
     border-top-left-radius: 50px;
 
     .dropdown-header {
-      background-color: #4059AD;
+      background-color: #4059ad;
 
       & > * {
         z-index: 9998;
@@ -78,7 +75,7 @@ export default {
   }
 
   .dropdown-content {
-    background-color: #4059AD;
+    background-color: #4059ad;
     display: none;
     width: 100%;
     left: 0;
@@ -86,6 +83,19 @@ export default {
     z-index: 9997;
     border-bottom-right-radius: 50px;
     border-bottom-left-radius: 50px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .dropdown {
+    width: 300px;
+    padding: 15px;
+  }
+}
+@media (max-width: 500px) {
+  .dropdown {
+    width: 150px;
+    padding: 15px;
   }
 }
 </style>

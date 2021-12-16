@@ -1,29 +1,55 @@
 <template>
   <div>
-    <Navbar/>
+    <Navbar />
     <CardsBusinessesContainer>
       <CardsBusiness :phoneNumber="'test'">
         Verslas nuo cibulio
 
-        <template v-slot:address>
-          Adresas
-        </template>
+        <template v-slot:address> Adresas </template>
 
-        <template v-slot:description>
-          Lorem ipsum.
-        </template>
+        <template v-slot:description> Lorem ipsum. </template>
       </CardsBusiness>
     </CardsBusinessesContainer>
     <div class="container container-sm grid-rows grid-of-3">
-      <button class="button button-warning" @click="() => $router.push('/business/verslas-nuo-nulio/edit')">
+      <button
+        class="button button-warning"
+        @click="() => $router.push('/business/verslas-nuo-nulio/edit')"
+      >
         Redaguoti bazinę informaciją
       </button>
-      <button class="button button-warning" @click="() => $router.push('/business/verslas-nuo-nulio/services')">
+      <button
+        class="button button-warning"
+        @click="() => $router.push('/business/verslas-nuo-nulio/services')"
+      >
         Redaguoti paslaugas
       </button>
-      <button class="button button-warning" @click="() => $router.push('/business/verslas-nuo-nulio/schedule')">
+      <button
+        class="button button-warning"
+        @click="() => $router.push('/business/verslas-nuo-nulio/schedule')"
+      >
         Redaguoti darbo laiką
       </button>
     </div>
   </div>
 </template>
+
+<style lang="scss">
+@media (max-width: 1100px) {
+  button {
+    height: 50px;
+  }
+  .button {
+    font-size: calc(13px + 0.1vw);
+    padding: 0;
+  }
+}
+@media (max-width: 500px) {
+  button {
+    height: 42px;
+  }
+  .button {
+    font-size: calc(10px + 0.1vw);
+    padding: 0;
+  }
+}
+</style>

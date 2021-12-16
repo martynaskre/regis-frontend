@@ -5,13 +5,13 @@
         <img :src="require('~/assets/img/icons/phone.png')" />
       </a>
       <h1 class="providerHeading cursor-pointer" @click="handleClick">
-        <slot/>
+        <slot />
       </h1>
       <p class="providerAddress">
-        <slot name="address"/>
+        <slot name="address" />
       </p>
       <p class="providerDescription">
-        <slot name="description"/>
+        <slot name="description" />
       </p>
     </div>
   </div>
@@ -60,7 +60,7 @@ export default {
 .providerPhone {
   width: 32px;
   height: 32px;
-  background-color: #C4C4C4;
+  background-color: #c4c4c4;
   position: absolute;
   right: 15px;
   top: 15px;
@@ -97,7 +97,7 @@ export default {
   margin: 20px;
 }
 .servicesSelect {
-  background-color: #C4C4C4;
+  background-color: #c4c4c4;
   width: 100%;
   font-size: 16px;
   font-family: 'Montserrat', sans-serif;
@@ -107,5 +107,69 @@ export default {
 }
 .servicesSelect:focus {
   outline: 0;
+}
+
+@media (max-width: 1100px) {
+  .providerContainer {
+    height: 250px;
+  }
+  .providerTextBox {
+    height: 200px;
+  }
+  .providerHeading {
+    font-size: 30px;
+  }
+  .providerPhone {
+    width: 28px;
+    height: 28px;
+  }
+  img {
+    width: 20px;
+    height: 20px;
+  }
+  .providerAddress {
+    font-size: 14px;
+  }
+  .providerAddress:before {
+    width: 11px;
+    height: 11px;
+    top: calc(50% - 1px);
+  }
+  .providerDescription {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 500px) {
+  .providerContainer {
+    height: 200px;
+  }
+  .providerTextBox {
+    width: 60%;
+    height: 180px;
+    margin-top: 10px;
+  }
+  .providerHeading {
+    font-size: 18px;
+  }
+  .providerPhone {
+    width: 22px;
+    height: 22px;
+  }
+  img {
+    width: 15px;
+    height: 15px;
+  }
+  .providerAddress {
+    font-size: 11px;
+  }
+  .providerAddress:before {
+    width: 9px;
+    height: 9px;
+    top: calc(50% - 1px);
+  }
+  .providerDescription {
+    font-size: 11px;
+  }
 }
 </style>
