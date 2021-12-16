@@ -1,5 +1,5 @@
 <template>
-  <div class="timetable-wrapper">
+  <div class="timetable-wrapper" :class="containerClasses">
     <table class="timetable">
       <thead>
         <tr>
@@ -39,12 +39,23 @@
 import moment from 'moment';
 
 export default {
+  props: {
+    booking: {
+      type: Boolean,
+      default: false
+    },
+  },
   filters: {
     hours(value) {
       return moment().set('hour', value).set('minute', 0).format('HH:mm');
     }
   },
   computed: {
+    containerClasses() {
+      return (this.booking)
+        ? 'booking-timetable-wrapper'
+        : '';
+    },
     selectedWeek() {
       return {
         start: moment().startOf('isoweek'),
@@ -115,8 +126,14 @@ export default {
   methods: {
     handleClick(time, entryIndex) {
       const entry = this.entries[time][entryIndex];
+      const date = new Date(this.weekDays[entryIndex].clone()
+        .toDate()
+        .setHours(time));
 
-      //TODO
+      this.$emit('book', {
+        entry,
+        date,
+      });
     },
     mapEntryClasses(entry) {
       switch (entry.type) {
@@ -159,6 +176,18 @@ export default {
   padding: 0 4rem;
   overflow-x: auto;
   width: 100%;
+
+  &.booking-timetable-wrapper {
+    .timetable {
+      td {
+        cursor: not-allowed;
+
+        &:not(.taken-provider):not(.taken-client):not(.has-entry) {
+          cursor: pointer;
+        }
+      }
+    }
+  }
 
   @include media-breakpoint-down(md) {
     padding: 0 1rem;

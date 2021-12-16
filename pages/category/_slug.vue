@@ -11,6 +11,7 @@
         <CardsBusiness v-else
                        v-for="business in businesses"
                        :key="business.id"
+                       @click="() => $router.push(`/business/${business.slug}/show`)"
                        :phoneNumber="'123'">
           {{ business.title }}
 

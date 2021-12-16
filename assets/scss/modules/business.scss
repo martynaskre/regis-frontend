@@ -1,0 +1,21 @@
+.business {
+  .business-header {
+    background-color: $primary-gray;
+    background-position: center center;
+    background-size: cover;
+    height: 228px;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    position: relative;
+
+    .business-logo {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+    }
+  }
+
+  .business-description {
+    margin-bottom: 4rem;
+  }
+}
