@@ -15,7 +15,7 @@
           <nuxt-link to="/calendar" class="btn calendar" />
           <nuxt-link to="/profile/settings" class="btn user" />
         </template>
-        <template v-if="$store.getters.clientLoggedIn">
+        <template v-else-if="$store.getters.clientLoggedIn">
           <nuxt-link to="/calendar" class="btn calendar" />
           <nuxt-link to="/profile/settings" class="btn user" />
         </template>
