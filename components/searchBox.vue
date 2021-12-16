@@ -46,9 +46,6 @@ export default {
       return this.$store.state.categories.list;
     },
   },
-  mounted() {
-    console.log(this.categories);
-  },
   methods: {
     handleSearch() {
       const category = this.categories.find((cat) => cat.id === this.category);
