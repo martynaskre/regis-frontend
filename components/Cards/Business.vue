@@ -4,7 +4,7 @@
       <a class="providerPhone" :href="`phone:${phoneNumber}`">
         <img :src="require('~/assets/img/icons/phone.png')" />
       </a>
-      <h1 class="providerHeading">
+      <h1 class="providerHeading cursor-pointer" @click="handleClick">
         <slot/>
       </h1>
       <p class="providerAddress">
@@ -23,6 +23,11 @@ export default {
     phoneNumber: {
       type: String,
       required: true,
+    },
+  },
+  methods: {
+    handleClick(e) {
+      this.$emit('click', e);
     },
   },
 };

@@ -7,21 +7,40 @@
       <slot/>
     </div>
     <div class="dropdown-content">
-      content
+      <slot name="content"/>
     </div>
   </div>
 </template>
 
 <script>
+import mitt from 'mitt';
+
+const emitter = mitt();
+const closeEvent = 'closeDropdowns'
+
 export default {
   data() {
     return {
+      id: Math.floor(Math.random() * 100),
       opened: false,
     };
+  },
+  mounted() {
+    emitter.on(closeEvent, ({ exclude }) => {
+      if (this.id !== exclude) {
+        this.opened = false;
+      }
+    });
   },
   methods: {
     toggleDropdown() {
       this.opened = !this.opened;
+
+      if (this.opened) {
+        emitter.emit(closeEvent, {
+          exclude: this.id,
+        });
+      }
     }
   },
 }

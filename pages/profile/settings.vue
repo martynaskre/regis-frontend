@@ -3,7 +3,9 @@
     <Navbar />
     <div class="mainContainer">
       <div class="userPhotoContainer">
-        <div class="userPhoto"></div>
+        <div class="userPhoto">
+          <img src="~assets/img/icons/account-alt.png" />
+        </div>
         <div class="userSideButton top">
           <Dropdown>
             <div class="sideButton">
@@ -12,19 +14,16 @@
               </div>
               <p>Settings</p>
             </div>
+            <template v-slot:content>
+              <div class="text-center">
+                <button class="button button-rounded button-wide button-warning" @click="logout">
+                  Atsijungti
+                </button>
+              </div>
+            </template>
           </Dropdown>
         </div>
         <div class="userSideButton middle">
-          <Dropdown>
-            <div class="sideButton">
-              <div class="sideButton-image">
-                <img src="~/assets/img/icons/edit.png">
-              </div>
-              <p>Edit</p>
-            </div>
-          </Dropdown>
-        </div>
-        <div class="userSideButton bot">
           <Dropdown>
             <div class="sideButton">
               <div class="sideButton-image">
@@ -32,13 +31,23 @@
               </div>
               <p>Report an issue</p>
             </div>
+            <template v-slot:content>
+              <Input name="shortDescription"
+                     type="textarea"
+                     v-model="bugReport"
+                     :businessInput="true" />
+              <div class="text-center">
+                <button class="button button-rounded button-wide button-warning" @click="report">
+                  Pranešti
+                </button>
+              </div>
+            </template>
           </Dropdown>
         </div>
       </div>
-      <div class="nameBox"><h1>Vardenis Pavardenis</h1></div>
-      <div class="descriptionBox">Description:</div>
-      <div class="box"></div>
-      <div class="box"></div>
+      <div class="nameBox">
+        <h1>{{ user.firstName }} {{ user.lastName }}</h1>
+      </div>
     </div>
   </div>
 </template>
@@ -46,7 +55,34 @@
 <script>
 export default {
   middleware: 'auth',
-}
+  data() {
+    return {
+      bugReport: null,
+    };
+  },
+  computed: {
+    user() {
+      return this.$auth.$state.user;
+    },
+  },
+  methods: {
+    logout() {
+      this.$auth.logout();
+    },
+    report() {
+      this.bugReport = null;
+
+      this.$notify(
+        {
+          group: 'success',
+          title: 'Veiksmas sėkmingas',
+          text: 'Ačiū už praneštą klaidą!',
+        },
+        2000
+      );
+    }
+  },
+};
 </script>
 
 <style lang="scss">
@@ -96,11 +132,13 @@ export default {
   position: relative;
   .userPhoto {
     width: 250px;
+    height: 250px;
     aspect-ratio: 1;
     border-radius: 50%;
-    background-color: lightgray;
-    background-image: url('https://cdn3.iconfinder.com/data/icons/business-finance-line-5/32/client-2-512.png');
-    background-size: cover;
+    background-color: #C4C4C4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .userSideButton {
     position: absolute;
@@ -124,15 +162,18 @@ export default {
   width: 45%;
   height: 50px;
   border-radius: 20px;
-  background: lightgray;
+  background: #C4C4C4;
   display: flex;
   justify-content: center;
   align-items: center;
+
   h1 {
     font-size: 20px;
     font-weight: normal;
+    margin-top: 0;
   }
-  margin: 10px;
+
+  margin: 2rem 10px;
 }
 .descriptionBox {
   width: 80%;
