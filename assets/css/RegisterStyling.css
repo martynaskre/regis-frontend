@@ -3,21 +3,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: calc(150px + 23vw);
+  width: calc(120px + 23vw);
   border-radius: 20px;
   background-color: rgba(250, 250, 250, 0.8);
   z-index: 20;
   position: absolute;
 }
 .Customer {
-  height: calc(350px + 12vw);
-  left: calc((60% - calc(150px + 23vw)) / 2);
-  top: calc((100% - calc(350px + 12vw)) / 2);
+  height: calc(380px + 12vw);
+  left: calc((60% - calc(120px + 23vw)) / 2);
+  top: calc((100% - calc(380px + 12vw)) / 2);
 }
 .Provider {
-  height: calc(450px + 17vw);
-  right: calc((60% - calc(150px + 23vw)) / 2);
-  top: calc((100% - calc(450px + 17vw)) / 2);
+  height: calc(480px + 17vw);
+  right: calc((60% - calc(120px + 23vw)) / 2);
+  top: calc((100% - calc(480px + 17vw)) / 2);
 }
 .hide {
   visibility: hidden;
