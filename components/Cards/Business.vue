@@ -48,7 +48,7 @@ export default {
   margin-top: 25px;
   width: 70%;
   background-color: white;
-  right: 2%;
+  right: 2.5%;
   border-radius: 20px;
   padding: 20px 40px;
 }
@@ -145,31 +145,32 @@ export default {
     height: 200px;
   }
   .providerTextBox {
-    width: 60%;
+    width: 95%;
     height: 180px;
     margin-top: 10px;
+    padding: 20px;
   }
   .providerHeading {
-    font-size: 18px;
+    font-size: 20px;
   }
   .providerPhone {
-    width: 22px;
-    height: 22px;
+    width: 25px;
+    height: 25px;
   }
   img {
-    width: 15px;
-    height: 15px;
+    width: 17px;
+    height: 17px;
   }
   .providerAddress {
-    font-size: 11px;
+    font-size: 12px;
   }
   .providerAddress:before {
-    width: 9px;
-    height: 9px;
+    width: 11px;
+    height: 11px;
     top: calc(50% - 1px);
   }
   .providerDescription {
-    font-size: 11px;
+    font-size: 12px;
   }
 }
 </style>

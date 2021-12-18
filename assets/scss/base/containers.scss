@@ -1,11 +1,28 @@
 .container {
   margin: 2rem auto;
 
+  @media (max-width: 1100px) {
+    margin: 0 auto;
+    padding: 0 30px;
+    .my-10 {
+      margin: 0;
+    }
+  }
+
   &.container-md {
     width: 90%;
   }
 
   &.container-sm {
     width: 70%;
+
+    @media (max-width: 1100px) {
+      width: 100%;
+      height: auto;
+      .container-sm {
+        height: auto;
+        padding: 0;
+      }
+    }
   }
 }
