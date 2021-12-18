@@ -44,7 +44,7 @@
 }
 @media (max-width: 500px) {
   .text {
-    font-size: 0.9rem !important;
+    font-size: 0.8rem !important;
     padding: 0;
   }
 }
