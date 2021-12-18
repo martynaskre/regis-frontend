@@ -6,49 +6,12 @@
                @book="submit"
     >
       <TimetableEntry
-        :type="'taken-provider'"
-        :occursAt="new Date('2021-12-13 09:00:00')"
-        :duration="1"
-      />
-      <TimetableEntry
-        :type="'taken-provider'"
-        :occursAt="new Date('2021-12-13 10:00:00')"
-        :duration="1"
-      />
-      <TimetableEntry
-        :type="'taken-provider'"
-        :occursAt="new Date('2021-12-13 11:00:00')"
-        :duration="1"
-      />
-      <TimetableEntry
-        :type="'taken-provider'"
-        :occursAt="new Date('2021-12-13 12:00:00')"
-        :duration="1"
-      />
-      <TimetableEntry
-        :type="'taken-provider'"
-        :occursAt="new Date('2021-12-13 13:00:00')"
-        :duration="1"
-      />
-      <TimetableEntry
-        :type="'taken-client'"
-        :occursAt="new Date('2021-12-16 14:00:00')"
-        :duration="1"
-      />
-      <TimetableEntry
-        :type="'taken-client'"
-        :occursAt="new Date('2021-12-16 15:00:00')"
-        :duration="1"
-      />
-      <TimetableEntry
-        :type="'taken-client'"
-        :occursAt="new Date('2021-12-16 16:00:00')"
-        :duration="1"
-      />
-      <TimetableEntry
-        :type="'taken-client'"
-        :occursAt="new Date('2021-12-16 17:00:00')"
-        :duration="1"
+        v-for="(booking, index) in bookings"
+        :key="index"
+        :type="booking.type"
+        :occursAt="new Date(booking.reservedTime)"
+        :duration="booking.duration"
+        :title="(booking.hasOwnProperty('title')) ? booking.title : null"
       />
     </Timetable>
   </div>
@@ -56,6 +19,18 @@
 
 <script>
 export default {
+  data() {
+    return {
+      bookings: [],
+    };
+  },
+  async fetch() {
+    this.bookings = await this.$store.dispatch('businesses/fetchBookings', {
+      businessId: 1,
+    });
+
+    //console.log(this.bookings);
+  },
   methods: {
     submit({ entry, date }) {
       if (Object.keys(entry).length > 0) {

@@ -16,4 +16,11 @@ export const actions = {
 
     return [];
   },
+  async fetchBookings({}, { businessId }) {
+    try {
+      let response = await this.$axios.get(`business/${businessId}/bookings`);
+
+      return response.data.data;
+    } catch (e) {}
+  }
 }

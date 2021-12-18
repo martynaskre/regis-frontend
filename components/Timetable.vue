@@ -111,10 +111,12 @@ export default {
 
         this.weekDays.forEach((weekDay, index) => {
           if (weekDay.date() === occursAt.date()) {
-            entries[occursAt.hour()][index] = (entry);
+            if (entries[occursAt.hour()]) {
+              entries[occursAt.hour()][index] = entry;
 
-            for (let i = 1; i < entry.duration; i++) {
-              entries[occursAt.hour() + i].pop();
+              for (let i = 1; i < entry.duration; i++) {
+                entries[occursAt.hour() + i].pop();
+              }
             }
           }
         });
@@ -141,6 +143,8 @@ export default {
           return 'taken-provider';
         case 'taken-client':
           return 'taken-client';
+        case 'default':
+          return 'has-entry';
         default:
           return '';
       }
