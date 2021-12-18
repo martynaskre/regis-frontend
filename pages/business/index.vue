@@ -37,10 +37,9 @@
 @media (max-width: 1100px) {
   button {
     height: 50px;
-  }
-  .button {
     font-size: calc(13px + 0.1vw);
     padding: 0;
+    margin: 1rem;
   }
 }
 @media (max-width: 500px) {
@@ -48,7 +47,7 @@
     height: 42px;
   }
   .button {
-    font-size: calc(10px + 0.1vw);
+    font-size: 15px;
     padding: 0;
   }
 }

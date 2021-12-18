@@ -2,83 +2,108 @@
   <div>
     <Navbar />
     <div class="container container-sm text-center">
-      <h1>Verslo redagavimas</h1>
+      <h1 class="name">Verslo redagavimas</h1>
       <div class="my-10 grid-rows grid-of-2">
         <div>
-          <Input name="title"
-                 type="text"
-                 label="Pavadinimas:"
-                 v-model="title"
-                 :businessInput="true" />
-          <Input name="logo"
-                 type="file"
-                 label="Logotipas:"
-                 @change="handleLogo"
-                 :businessInput="true" />
+          <Input
+            name="title"
+            type="text"
+            label="Pavadinimas:"
+            v-model="title"
+            :businessInput="true"
+          />
+          <Input
+            name="logo"
+            type="file"
+            label="Logotipas:"
+            @change="handleLogo"
+            :businessInput="true"
+          />
         </div>
         <div>
-          <Input name="category"
-                 type="select"
-                 label="Kategorija:"
-                 placeholder="Pasirinkite kategoriją"
-                 :options="['test']"
-                 v-model="category"
-                 :businessInput="true" />
-          <Input name="cover"
-                 type="file"
-                 label="Viršelis:"
-                 @change="handleCover"
-                 :businessInput="true" />
+          <Input
+            name="category"
+            type="select"
+            label="Kategorija:"
+            placeholder="Pasirinkite kategoriją"
+            :options="['test']"
+            v-model="category"
+            :businessInput="true"
+          />
+          <Input
+            name="cover"
+            type="file"
+            label="Viršelis:"
+            @change="handleCover"
+            :businessInput="true"
+          />
         </div>
       </div>
       <div class="container container-sm">
-        <Input name="addressCountry"
-               type="text"
-               label="Valstybė:"
-               v-model="addressCountry"
-               :businessInput="true" />
+        <Input
+          name="addressCountry"
+          type="text"
+          label="Valstybė:"
+          v-model="addressCountry"
+          :businessInput="true"
+        />
       </div>
       <div class="my-10 grid-rows grid-of-2">
         <div>
-          <Input name="addressCity"
-                 type="text"
-                 label="Miestas:"
-                 v-model="addressCity"
-                 :businessInput="true" />
-          <Input name="addressHouseNumber"
-                 type="text"
-                 label="Namo nr.:"
-                 v-model="addressHouseNumber"
-                 :businessInput="true" />
+          <Input
+            name="addressCity"
+            type="text"
+            label="Miestas:"
+            v-model="addressCity"
+            :businessInput="true"
+          />
+          <Input
+            name="addressHouseNumber"
+            type="text"
+            label="Namo nr.:"
+            v-model="addressHouseNumber"
+            :businessInput="true"
+          />
         </div>
         <div>
-          <Input name="addressStreet"
-                 type="text"
-                 label="Adresas:"
-                 v-model="addressStreet"
-                 :businessInput="true" />
-          <Input name="addressPostCode"
-                 type="text"
-                 label="Pašto kodas:"
-                 v-model="addressPostCode"
-                 :businessInput="true" />
+          <Input
+            name="addressStreet"
+            type="text"
+            label="Adresas:"
+            v-model="addressStreet"
+            :businessInput="true"
+          />
+          <Input
+            name="addressPostCode"
+            type="text"
+            label="Pašto kodas:"
+            v-model="addressPostCode"
+            :businessInput="true"
+          />
         </div>
       </div>
       <div class="container container-sm">
-        <Input name="shortDescription"
-               type="textarea"
-               label="Trumpas aprašymas:"
-               v-model="shortDescription"
-               :businessInput="true" />
+        <Input
+          name="shortDescription"
+          type="textarea"
+          label="Trumpas aprašymas:"
+          v-model="shortDescription"
+          :businessInput="true"
+        />
       </div>
       <div class="container container-sm">
-        <Input name="longDescription"
-               type="textarea"
-               label="Ilgas aprašymas:"
-               v-model="longDescription"
-               :businessInput="true" />
+        <Input
+          name="longDescription"
+          type="textarea"
+          label="Ilgas aprašymas:"
+          v-model="longDescription"
+          :businessInput="true"
+        />
       </div>
-      <button class="button button-large button-rounded button-success" @click="submit">
+      <button
+        class="button button-large button-rounded button-success"
+        @click="submit"
+      >
         Išsaugoti verslą
       </button>
     </div>
@@ -111,7 +136,25 @@ export default {
     },
     submit() {
       this.$router.push('/business');
-    }
+    },
   },
-}
+};
 </script>
+
+<style lang="scss">
+@media (max-width: 1100px) {
+  .form-inner {
+    display: flex;
+    flex-direction: column;
+  }
+  label {
+    position: relative;
+    right: 38%;
+    text-align: left;
+  }
+  .name {
+    font-size: 2rem;
+    margin-top: 2rem;
+  }
+}
+</style>
