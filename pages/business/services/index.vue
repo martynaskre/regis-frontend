@@ -39,10 +39,16 @@
 <script>
 export default {
   middleware: 'auth-provider',
-  async asyncData({ store }) {
-    const services = await store.dispatch('businesses/services', 1);
+  async asyncData({ store, redirect }) {
+    const business = await store.dispatch('providers/getBusiness');
 
-    return { services };
+    if (!business) {
+      redirect('/business/create');
+    }
+
+    const services = await store.dispatch('businesses/services', business.id);
+
+    return { services, business };
   },
 };
 </script>

@@ -46,8 +46,6 @@ export default {
   async asyncData({ redirect, store, route }) {
     const service = await store.dispatch('services/get', route.params.id);
 
-    console.log(service);
-
     if (!service) {
       redirect('/business/services');
     }
@@ -79,6 +77,14 @@ export default {
       )
 
       if (response) {
+        this.$notify(
+          {
+            group: 'success',
+            title: 'Paslauga atnaujinta!',
+          },
+          2000
+        );
+
         this.$router.push('/business/services');
       }
     },

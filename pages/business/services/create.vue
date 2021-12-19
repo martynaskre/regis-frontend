@@ -82,6 +82,14 @@ export default {
       );
 
       if (response) {
+        this.$notify(
+          {
+            group: 'success',
+            title: 'Paslauga sukurta!',
+          },
+          2000
+        );
+
         this.$router.push('/business/services');
       }
     },

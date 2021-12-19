@@ -34,5 +34,12 @@
       </CardsServicesContainer>
     </div>
   </div>
-  </div>
 </template>
+
+<script>
+export default {
+  async asyncData() {
+
+  },
+};
+</script>

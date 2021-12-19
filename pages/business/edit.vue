@@ -180,6 +180,14 @@ export default {
       );
 
       if (response) {
+        this.$notify(
+          {
+            group: 'success',
+            title: 'Verslas atnaujintas!',
+          },
+          2000
+        );
+
         await this.$router.push('/business');
       }
     },

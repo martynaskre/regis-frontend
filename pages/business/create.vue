@@ -151,6 +151,14 @@ export default {
       );
 
       if (response) {
+        this.$notify(
+          {
+            group: 'success',
+            title: 'Verslas sukurtas!',
+          },
+          2000
+        );
+
         await this.$router.push('/business');
       }
     }
