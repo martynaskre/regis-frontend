@@ -20,7 +20,10 @@
               :class="mapEntryClasses(entry)"
               @click="handleClick(time, index)">
             <div v-if="entry.type === 'default' && Object.entries(entry).length !== 0"
-                 class="timetable-activity">
+                 class="timetable-activity"
+                 :class="{ 'timetable-activity-clickable': entry.hasOwnProperty('bookingId') }"
+                 @click="handleEntryClick(entry)"
+            >
               <h4 class="timetable-activity-heading">
                 {{ entry.title }}
               </h4>
@@ -75,7 +78,11 @@ export default {
       return weekDays;
     },
     rawEntries() {
-      const entries = Object.keys(this.$slots.default);
+      const slots = (typeof this.$slots.default === 'object' && this.$slots.default !== null)
+        ? this.$slots.default
+        : {};
+
+      const entries = Object.keys(slots);
 
       return (entries.length <= 0)
         ? []
@@ -106,6 +113,8 @@ export default {
         });
       }
 
+      const removeEntries = {};
+
       this.rawEntries.forEach((entry) => {
         const occursAt = entry.occursAt;
 
@@ -115,17 +124,32 @@ export default {
               entries[occursAt.hour()][index] = entry;
 
               for (let i = 1; i < entry.duration; i++) {
-                entries[occursAt.hour() + i].pop();
+                if (!removeEntries.hasOwnProperty(occursAt.hour() + i)) {
+                  removeEntries[occursAt.hour() + i] = [];
+                }
+
+                removeEntries[occursAt.hour() + i].push(index);
               }
             }
           }
         });
       });
 
+      Object.keys(removeEntries).forEach((hour) => {
+        const indexes = removeEntries[hour];
+
+        for (const index of indexes) {
+          entries[hour].splice(index, 1);
+        }
+      });
+
       return entries;
     }
   },
   methods: {
+    handleEntryClick(entry) {
+      this.$emit('entryClick', entry.bookingId);
+    },
     handleClick(time, entryIndex) {
       const entry = this.entries[time][entryIndex];
       const date = new Date(this.weekDays[entryIndex].clone()
@@ -150,25 +174,9 @@ export default {
       }
     },
     findEntryPoints() {
-      let lowest = undefined;
-      let highest = undefined;
-
-      this.rawEntries.forEach((entry) => {
-        const occursAt = entry.occursAt.hour();
-        const endsAt = entry.occursAt.clone().add(entry.duration, 'hours').hour();
-
-        if (!lowest || occursAt < lowest) {
-          lowest = occursAt;
-        }
-
-        if (!highest || endsAt > highest) {
-          highest = endsAt;
-        }
-      });
-
       return {
-        lowest,
-        highest,
+        lowest: 0,
+        highest: 23,
       }
     }
   }
@@ -267,6 +275,10 @@ export default {
           background-color: $primary-green;
           border-radius: 1rem;
           padding: 0.75rem;
+
+          &.timetable-activity-clickable {
+            cursor: pointer;
+          }
 
           .timetable-activity-heading {
             font-size: 0.75rem;

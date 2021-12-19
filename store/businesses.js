@@ -16,11 +16,66 @@ export const actions = {
 
     return [];
   },
-  async fetchBookings({}, { businessId }) {
+  async fetchCalendar({}, { businessId }) {
     try {
-      let response = await this.$axios.get(`business/${businessId}/bookings`);
+      let response = await this.$axios.get(`business/${businessId}/calendar`);
 
       return response.data.data;
     } catch (e) {}
+
+    return [];
+  },
+  async fetchBookings({}, id) {
+    try {
+      let response = await this.$axios.get(`business/${id}/bookings`);
+
+      return response.data.data;
+    } catch (e) {}
+
+    return [];
+  },
+  async create({}, data) {
+    try {
+      await this.$axios.post('business/', data, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      return true;
+    } catch (e) {}
+
+    return false;
+  },
+  async update({}, { id, data }) {
+    try {
+      await this.$axios.put(`business/${id}`, data, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      return true;
+    } catch (e) {}
+
+    return false;
+  },
+  async services({}, id) {
+    try {
+      let response = await this.$axios.get(`business/${id}/services`);
+
+      return response.data.data;
+    } catch (e) {}
+
+    return [];
+  },
+  async get({}, idOrSlug) {
+    try {
+      let response = await this.$axios.get(`business/${idOrSlug}`);
+
+      return response.data.data;
+    } catch (e) {}
+
+    return null;
   }
 }

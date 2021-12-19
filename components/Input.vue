@@ -22,7 +22,7 @@
               class="form-input"
       >
         <option value="">{{ placeholder }}</option>
-        <option v-for="(option, index) in options"
+        <option v-for="(option, index) in selectOptions"
                 :key="index"
                 :value="index">
           {{ option }}
@@ -40,7 +40,7 @@
         class="form-input"
       />
     </div>
-    <div class="form-element-error" v-if="error">
+    <div class="form-element-error" v-if="error && displayError">
       {{ error }}
     </div>
   </div>
@@ -74,13 +74,17 @@ export default {
       type: String,
       default: '',
     },
-    options: {
-      type: Array,
-      default: () => [],
+    selectOptions: {
+      type: Object,
+      default: () => {},
     },
     scheduleInput: {
       type: Boolean,
       default: false,
+    },
+    displayError: {
+      type: Boolean,
+      default: true,
     },
   },
   data() {
@@ -116,6 +120,9 @@ export default {
     value(value) {
       this.content = value;
     },
+    selectOptions(value) {
+      console.log(value);
+    }
   },
   methods: {
     handleInput(e) {

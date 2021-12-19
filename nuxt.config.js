@@ -48,6 +48,9 @@ export default {
   plugins: [
     { src: '~/plugins/axios' },
     { src: '~/plugins/notifications', mode: 'client' },
+    { src: '~/plugins/convert-form-data', mode: 'client' },
+    { src: '~/plugins/unwrap', mode: 'client' },
+    { src: '~/plugins/click-outside', mode: 'client' },
   ],
   components: true,
   buildModules: [

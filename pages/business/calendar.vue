@@ -45,9 +45,15 @@
 import moment from 'moment';
 
 export default {
-  middleware: 'auth-client',
-  async asyncData({ store }) {
-    const bookings = await store.dispatch('clients/getBookings');
+  middleware: 'auth-provider',
+  async asyncData({ store, redirect }) {
+    const business = await store.dispatch('providers/getBusiness');
+
+    if (!business) {
+      redirect('/business');
+    }
+
+    const bookings = await store.dispatch('businesses/fetchBookings', business.id);
 
     return { bookings };
   },

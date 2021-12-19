@@ -26,8 +26,8 @@
             type="select"
             label="Kategorija:"
             placeholder="Pasirinkite kategoriją"
-            :options="['test']"
-            v-model="category"
+            :select-options="categories"
+            v-model="categoryId"
             :businessInput="true"
           />
           <Input
@@ -112,19 +112,40 @@
 
 <script>
 export default {
+  async asyncData({ redirect, store }) {
+    const business = await store.dispatch('providers/getBusiness');
+
+    if (!business) {
+      redirect('/business');
+    }
+
+    const categories = {};
+
+    const databaseCategories = await store.dispatch('categories/fetchCategories');
+
+    for (const category of databaseCategories) {
+      categories[category.id] = category.title;
+    }
+
+    return {
+      business,
+      title: business.title,
+      categoryId: business.category.id,
+      addressCountry: business.addressCountry,
+      addressCity: business.addressCity,
+      addressStreet: business.addressStreet,
+      addressHouseNumber: business.addressHouseNumber,
+      addressPostCode: business.addressPostCode,
+      shortDescription: business.shortDescription,
+      longDescription: business.longDescription,
+      categories,
+    };
+  },
   data() {
     return {
-      title: 'Verslas nuo nulio',
-      category: null,
+      categories: {},
       logo: null,
       cover: null,
-      addressCountry: null,
-      addressCity: null,
-      addressStreet: null,
-      addressHouseNumber: null,
-      addressPostCode: null,
-      shortDescription: null,
-      longDescription: null,
     };
   },
   methods: {
@@ -134,8 +155,41 @@ export default {
     handleCover(e) {
       this.cover = (e.target.files || e.dataTransfer.files)[0];
     },
-    submit() {
-      this.$router.push('/business');
+    async submit() {
+      let response = await this.$store.dispatch(
+        'businesses/update',
+        {
+          id: this.business.id,
+          data: this.$convertToFormData(
+            this.$unwrap(
+              this.$data,
+              'title',
+              'categoryId',
+              'logo',
+              'cover',
+              'addressCountry',
+              'addressCity',
+              'addressStreet',
+              'addressHouseNumber',
+              'addressPostCode',
+              'shortDescription',
+              'longDescription'
+            )
+          )
+        }
+      );
+
+      if (response) {
+        this.$notify(
+          {
+            group: 'success',
+            title: 'Verslas atnaujintas!',
+          },
+          2000
+        );
+
+        await this.$router.push('/business');
+      }
     },
   },
 };

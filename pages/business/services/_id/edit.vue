@@ -2,7 +2,7 @@
   <div>
     <Navbar />
     <div class="container container-sm text-center">
-      <h1 class="name">Paslaugos kūrimas</h1>
+      <h1 class="name">Paslaugos redagavimas</h1>
       <div class="container container-sm">
         <Input
           name="title"
@@ -45,7 +45,7 @@
         class="button button-large button-rounded button-success"
         @click="submit"
       >
-        Sukurti paslaugą
+        Išsaugoti paslaugą
       </button>
     </div>
   </div>
@@ -53,17 +53,51 @@
 
 <script>
 export default {
-  data() {
+  middleware: 'auth-provider',
+  async asyncData({ redirect, store, route }) {
+    const service = await store.dispatch('services/get', route.params.id);
+
+    if (!service) {
+      redirect('/business/services');
+    }
+
     return {
-      title: null,
-      minPrice: null,
-      maxPrice: null,
-      description: null,
+      service,
+      title: service.title,
+      duration: service.duration,
+      minPrice: service.minPrice,
+      maxPrice: service.maxPrice,
+      description: service.description,
     };
   },
   methods: {
-    submit() {
-      this.$router.push('/business/verslas-nuo-nulio/services');
+    async submit() {
+      const response = await this.$store.dispatch(
+        'services/update',
+        {
+          id: this.service.id,
+          ...this.$unwrap(
+            this.$data,
+            'title',
+            'minPrice',
+            'maxPrice',
+            'duration',
+            'description',
+          ),
+        },
+      )
+
+      if (response) {
+        this.$notify(
+          {
+            group: 'success',
+            title: 'Paslauga atnaujinta!',
+          },
+          2000
+        );
+
+        this.$router.push('/business/services');
+      }
     },
   },
 };
@@ -80,12 +114,9 @@ export default {
       text-align: left;
     }
   }
-}
-@media (max-width: 500px) {
   .name {
-    font-size: 1.5rem;
+    font-size: 2rem;
     margin-top: 2rem;
-    margin-bottom: 1rem;
   }
 }
 </style>
