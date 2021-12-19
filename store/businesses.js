@@ -16,12 +16,23 @@ export const actions = {
 
     return [];
   },
-  async fetchBookings({}, { businessId }) {
+  async fetchCalendar({}, { businessId }) {
     try {
-      let response = await this.$axios.get(`business/${businessId}/bookings`);
+      let response = await this.$axios.get(`business/${businessId}/calendar`);
 
       return response.data.data;
     } catch (e) {}
+
+    return [];
+  },
+  async fetchBookings({}, id) {
+    try {
+      let response = await this.$axios.get(`business/${id}/bookings`);
+
+      return response.data.data;
+    } catch (e) {}
+
+    return [];
   },
   async create({}, data) {
     try {

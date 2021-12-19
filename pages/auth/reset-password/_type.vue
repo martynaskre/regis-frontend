@@ -1,32 +1,34 @@
 <template>
   <div>
     <BackRectangles />
-    <div class="login-container">
-      <h1>REGIS</h1>
-      <Input
-        class="logInput"
-        name="email"
-        type="text"
-        placeholder="El. paštas"
-        v-model="email"
-      />
-      <Input
-        class="logInput"
-        name="password"
-        type="password"
-        placeholder="Slaptažodis"
-        v-model="password"
-      />
-      <Input
-        class="logInput"
-        name="passwordConfirmation"
-        type="password"
-        placeholder="Pakartokite slaptažodį"
-        v-model="passwordConfirmation"
-      />
-      <button class="btn log" @click="submit">
-        Nustatyti slaptažodį
-      </button>
+    <div class="centerContainer">
+      <div class="login-container">
+        <h1>REGIS</h1>
+        <Input
+          class="logInput"
+          name="email"
+          type="text"
+          placeholder="El. paštas"
+          v-model="email"
+        />
+        <Input
+          class="logInput"
+          name="password"
+          type="password"
+          placeholder="Slaptažodis"
+          v-model="password"
+        />
+        <Input
+          class="logInput"
+          name="passwordConfirmation"
+          type="password"
+          placeholder="Pakartokite slaptažodį"
+          v-model="passwordConfirmation"
+        />
+        <button class="btn log" @click="submit">
+          Nustatyti slaptažodį
+        </button>
+      </div>
     </div>
   </div>
 </template>

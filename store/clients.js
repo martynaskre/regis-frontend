@@ -49,7 +49,9 @@ export const actions = {
     try {
       const response = await this.$axios.get('clientBooking/client');
 
-      return response.data.data;
+      return (response.data.hasOwnProperty('data'))
+        ? response.data.data
+        : [];
     } catch (e) {}
 
     return [];

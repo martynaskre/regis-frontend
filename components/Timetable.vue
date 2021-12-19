@@ -78,7 +78,11 @@ export default {
       return weekDays;
     },
     rawEntries() {
-      const entries = Object.keys(this.$slots.default);
+      const slots = (typeof this.$slots.default === 'object' && this.$slots.default !== null)
+        ? this.$slots.default
+        : {};
+
+      const entries = Object.keys(slots);
 
       return (entries.length <= 0)
         ? []
@@ -109,6 +113,8 @@ export default {
         });
       }
 
+      const removeEntries = {};
+
       this.rawEntries.forEach((entry) => {
         const occursAt = entry.occursAt;
 
@@ -118,11 +124,23 @@ export default {
               entries[occursAt.hour()][index] = entry;
 
               for (let i = 1; i < entry.duration; i++) {
-                entries[occursAt.hour() + i].pop();
+                if (!removeEntries.hasOwnProperty(occursAt.hour() + i)) {
+                  removeEntries[occursAt.hour() + i] = [];
+                }
+
+                removeEntries[occursAt.hour() + i].push(index);
               }
             }
           }
         });
+      });
+
+      Object.keys(removeEntries).forEach((hour) => {
+        const indexes = removeEntries[hour];
+
+        for (const index of indexes) {
+          entries[hour].splice(index, 1);
+        }
       });
 
       return entries;
@@ -156,22 +174,6 @@ export default {
       }
     },
     findEntryPoints() {
-      let lowest = undefined;
-      let highest = undefined;
-
-      this.rawEntries.forEach((entry) => {
-        const occursAt = entry.occursAt.hour();
-        const endsAt = entry.occursAt.clone().add(entry.duration, 'hours').hour();
-
-        if (!lowest || occursAt < lowest) {
-          lowest = occursAt;
-        }
-
-        if (!highest || endsAt > highest) {
-          highest = endsAt;
-        }
-      });
-
       return {
         lowest: 0,
         highest: 23,

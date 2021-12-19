@@ -12,7 +12,7 @@
       <div class="buttons">
         <template v-if="$store.getters.providerLoggedIn">
           <nuxt-link to="/business" class="btn plus" />
-          <nuxt-link to="/calendar" class="btn calendar" />
+          <nuxt-link to="/business/calendar" class="btn calendar" />
           <nuxt-link to="/profile/settings" class="btn user" />
         </template>
         <template v-else-if="$store.getters.clientLoggedIn">

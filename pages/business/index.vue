@@ -5,6 +5,7 @@
       <CardsBusiness :phoneNumber="auth.user.phoneNumber"
                      :logo="business.logo"
                      :cover="business.cover"
+                     @click="() => $router.push(`/business/${business.slug}/show`)"
       >
         {{ business.title }}
 

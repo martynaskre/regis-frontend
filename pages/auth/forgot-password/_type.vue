@@ -1,22 +1,24 @@
 <template>
   <div>
     <BackRectangles />
-    <div class="login-container">
-      <h1>REGIS</h1>
-      <p v-if="successful" class="mb-2">Slaptažodžio atkūrimo laiškas išsiųstas į el. paštą.</p>
-      <Input
-        class="logInput"
-        name="email"
-        type="text"
-        placeholder="El. paštas"
-        v-model="email"
-        :disabled="disabled"
-      />
-      <button class="btn log"
-              :disabled="disabled"
-              @click="submit">
-        Atkurti slaptažodį
-      </button>
+    <div class="centerContainer">
+      <div class="login-container">
+        <h1>REGIS</h1>
+        <p v-if="successful" class="mb-2">Slaptažodžio atkūrimo laiškas išsiųstas į el. paštą.</p>
+        <Input
+          class="logInput"
+          name="email"
+          type="text"
+          placeholder="El. paštas"
+          v-model="email"
+          :disabled="disabled"
+        />
+        <button class="btn log"
+                :disabled="disabled"
+                @click="submit">
+          Atkurti slaptažodį
+        </button>
+      </div>
     </div>
   </div>
 </template>

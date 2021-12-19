@@ -32,7 +32,7 @@ export default {
       error({ statusCode: 404, message: 'Tokia paslauga neegzistuoja.' });
     }
 
-    const bookings = await store.dispatch('businesses/fetchBookings', {
+    const bookings = await store.dispatch('businesses/fetchCalendar', {
       businessId: slug,
     });
 
@@ -44,7 +44,7 @@ export default {
     };
   },
   methods: {
-    submit({ entry, date }) {
+    async submit({ entry, date }) {
       if (Object.keys(entry).length > 0) {
         this.$notify(
           {
@@ -55,7 +55,7 @@ export default {
           2000
         );
       } else {
-        const response = this.$store.dispatch('clients/createBooking', {
+        const response = await this.$store.dispatch('clients/createBooking', {
           reservedTime: date,
           serviceId: this.service.id,
         })
