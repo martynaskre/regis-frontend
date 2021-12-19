@@ -1,5 +1,5 @@
 <template>
-  <div class="providerContainer">
+  <div class="providerContainer" :style="{ backgroundImage: `url('${this.cover}')` }">
     <div class="providerTextBox">
       <a class="providerPhone" :href="`phone:${phoneNumber}`">
         <img :src="require('~/assets/img/icons/phone.png')" />
@@ -24,6 +24,14 @@ export default {
       type: String,
       required: true,
     },
+    logo: {
+      type: String,
+      required: true,
+    },
+    cover: {
+      type: String,
+      required: true,
+    }
   },
   methods: {
     handleClick(e) {
@@ -37,10 +45,11 @@ export default {
 .providerContainer {
   width: 85%;
   height: 300px;
-  background: grey;
   border-radius: 20px;
   margin-top: 60px;
   position: relative;
+  background: grey center center;
+  background-size: cover;
 }
 .providerTextBox {
   position: absolute;

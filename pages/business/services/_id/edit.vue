@@ -42,17 +42,45 @@
 
 <script>
 export default {
-  data() {
+  middleware: 'auth-provider',
+  async asyncData({ redirect, store, route }) {
+    const service = await store.dispatch('services/get', route.params.id);
+
+    console.log(service);
+
+    if (!service) {
+      redirect('/business/services');
+    }
+
     return {
-      title: 'Kaip sukurti verslą nuo nulio?',
-      minPrice: 10,
-      maxPrice: 50,
-      description: null,
+      service,
+      title: service.title,
+      duration: service.duration,
+      minPrice: service.minPrice,
+      maxPrice: service.maxPrice,
+      description: service.description,
     };
   },
   methods: {
-    submit() {
-      this.$router.push('/business/verslas-nuo-nulio/services');
+    async submit() {
+      const response = await this.$store.dispatch(
+        'services/update',
+        {
+          id: this.service.id,
+          ...this.$unwrap(
+            this.$data,
+            'title',
+            'minPrice',
+            'maxPrice',
+            'duration',
+            'description',
+          ),
+        },
+      )
+
+      if (response) {
+        this.$router.push('/business/services');
+      }
     },
   },
 };

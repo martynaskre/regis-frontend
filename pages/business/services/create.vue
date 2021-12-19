@@ -3,15 +3,13 @@
     <Navbar />
     <div class="container container-sm text-center">
       <h1>Paslaugos kūrimas</h1>
-      <div class="container container-sm">
-        <Input name="title"
-               type="text"
-               label="Pavadinimas:"
-               v-model="title"
-               :businessInput="true" />
-      </div>
       <div class="my-10 grid-rows grid-of-2">
         <div>
+          <Input name="title"
+                 type="text"
+                 label="Pavadinimas:"
+                 v-model="title"
+                 :businessInput="true" />
           <Input name="minPrice"
                  type="number"
                  label="Min. kaina:"
@@ -19,6 +17,11 @@
                  :businessInput="true" />
         </div>
         <div>
+          <Input name="duration"
+                 type="number"
+                 label="Trukmė:"
+                 v-model="duration"
+                 :businessInput="true" />
           <Input name="maxPrice"
                  type="number"
                  label="Maks. kaina:"
@@ -42,17 +45,45 @@
 
 <script>
 export default {
+  middleware: 'auth-provider',
+  async asyncData({ redirect, store }) {
+    const business = await store.dispatch('providers/getBusiness');
+
+    if (!business) {
+      redirect('/business');
+    }
+
+    return { business };
+  },
   data() {
     return {
       title: null,
       minPrice: null,
       maxPrice: null,
+      duration: null,
       description: null,
     };
   },
   methods: {
-    submit() {
-      this.$router.push('/business/verslas-nuo-nulio/services');
+    async submit() {
+      const response = await this.$store.dispatch(
+        'services/create',
+        {
+          businessId: this.business.id,
+          ...this.$unwrap(
+            this.$data,
+            'title',
+            'minPrice',
+            'maxPrice',
+            'duration',
+            'description',
+          ),
+        },
+      );
+
+      if (response) {
+        this.$router.push('/business/services');
+      }
     },
   },
 };

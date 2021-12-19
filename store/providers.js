@@ -42,4 +42,13 @@ export const actions = {
 
     return false;
   },
+  async getBusiness() {
+    try {
+      let response = await this.$axios.get('providers/business');
+
+      return response.data.data;
+    } catch (e) {}
+
+    return null;
+  }
 }

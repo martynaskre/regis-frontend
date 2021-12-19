@@ -2,36 +2,68 @@
   <div>
     <Navbar />
     <CardsBusinessesContainer>
-      <CardsBusiness :phoneNumber="'test'">
-        Verslas nuo cibulio
+      <CardsBusiness :phoneNumber="auth.user.phoneNumber"
+                     :logo="business.logo"
+                     :cover="business.cover"
+      >
+        {{ business.title }}
 
-        <template v-slot:address> Adresas </template>
+        <template v-slot:address>
+          {{ business.addressStreet }} {{ business.addressHouseNumber }}, {{ business.addressCity }}, {{ business.addressCountry }} {{ business.addressPostCode }}
+        </template>
 
-        <template v-slot:description> Lorem ipsum. </template>
+        <template v-slot:description>
+          {{ business.shortDescription }}
+        </template>
       </CardsBusiness>
     </CardsBusinessesContainer>
     <div class="container container-sm grid-rows grid-of-3">
       <button
         class="button button-warning"
-        @click="() => $router.push('/business/verslas-nuo-nulio/edit')"
+        @click="() => $router.push(`/business/edit`)"
       >
         Redaguoti bazinę informaciją
       </button>
       <button
         class="button button-warning"
-        @click="() => $router.push('/business/verslas-nuo-nulio/services')"
+        @click="() => $router.push(`/business/services`)"
       >
         Redaguoti paslaugas
       </button>
       <button
         class="button button-warning"
-        @click="() => $router.push('/business/verslas-nuo-nulio/schedule')"
+        @click="() => $router.push(`/business/schedule`)"
       >
         Redaguoti darbo laiką
       </button>
     </div>
   </div>
 </template>
+
+<script>
+import { mapState } from 'vuex';
+
+export default {
+  middleware: 'auth-provider',
+  data() {
+    return {
+      business: null,
+    };
+  },
+  async asyncData({ redirect, store }) {
+    const business = await store.dispatch('providers/getBusiness');
+
+    if (!business) {
+      redirect('/business/create');
+    }
+
+    return { business };
+  },
+  computed: {
+    ...mapState(['auth']),
+  },
+};
+</script>
 
 <style lang="scss">
 @media (max-width: 1100px) {

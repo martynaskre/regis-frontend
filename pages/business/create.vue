@@ -17,12 +17,12 @@
                  :businessInput="true" />
         </div>
         <div>
-          <Input name="category"
+          <Input name="categoryId"
                  type="select"
                  label="Kategorija:"
                  placeholder="Pasirinkite kategoriją"
-                 :options="['test']"
-                 v-model="category"
+                 :select-options="categories"
+                 v-model="categoryId"
                  :businessInput="true" />
           <Input name="cover"
                  type="file"
@@ -87,10 +87,30 @@
 
 <script>
 export default {
+  middleware: 'auth-provider',
+  async fetch({ store, redirect }) {
+    const business = await store.dispatch('providers/getBusiness');
+
+    if (business) {
+      redirect('/business/');
+    }
+  },
+  async asyncData({ store }) {
+    const categories = {};
+
+    const databaseCategories = await store.dispatch('categories/fetchCategories');
+
+    for (const category of databaseCategories) {
+      categories[category.id] = category.title;
+    }
+
+    return { categories };
+  },
   data() {
     return {
+      categories: {},
       title: null,
-      category: null,
+      categoryId: null,
       logo: null,
       cover: null,
       addressCountry: null,
@@ -109,8 +129,30 @@ export default {
     handleCover(e) {
       this.cover = (e.target.files || e.dataTransfer.files)[0];
     },
-    submit() {
-      this.$router.push('/business');
+    async submit() {
+      let response = await this.$store.dispatch(
+        'businesses/create',
+        this.$convertToFormData(
+          this.$unwrap(
+            this.$data,
+            'title',
+            'categoryId',
+            'logo',
+            'cover',
+            'addressCountry',
+            'addressCity',
+            'addressStreet',
+            'addressHouseNumber',
+            'addressPostCode',
+            'shortDescription',
+            'longDescription'
+          )
+        )
+      );
+
+      if (response) {
+        await this.$router.push('/business');
+      }
     }
   },
 }

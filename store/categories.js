@@ -14,9 +14,11 @@ export const actions = {
       let response = await this.$axios.get('categories');
 
       commit('SET_CATEGORIES', response.data.data);
-    } catch (e) {
-      //
-    }
+
+      return response.data.data;
+    } catch (e) {}
+
+    return [];
   },
   findCategoryBySlug({ state }, slug) {
     return state.list.find((category) => category.slug === slug);
