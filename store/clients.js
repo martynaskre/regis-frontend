@@ -45,4 +45,31 @@ export const actions = {
 
     return false;
   },
+  async getBookings({}) {
+    try {
+      const response = await this.$axios.get('clientBooking/client');
+
+      return response.data.data;
+    } catch (e) {}
+
+    return [];
+  },
+  async createBooking({}, data) {
+    try {
+      await this.$axios.post('clientBooking', data);
+
+      return true;
+    } catch (e) {}
+
+    return false;
+  },
+  async getBooking({}, id) {
+    try {
+      const response = await this.$axios.get(`clientBooking/${id}`);
+
+      return response.data.data;
+    } catch (e) {}
+
+    return null;
+  }
 }

@@ -1,5 +1,6 @@
 <template>
   <div class="providerContainer" :style="{ backgroundImage: `url('${this.cover}')` }">
+    <img :src="logo" class="providerImage"  alt="logotipas" />
     <div class="providerTextBox">
       <a class="providerPhone" :href="`phone:${phoneNumber}`">
         <img :src="require('~/assets/img/icons/phone.png')" />
@@ -116,6 +117,13 @@ export default {
 }
 .servicesSelect:focus {
   outline: 0;
+}
+
+.providerImage {
+  position: absolute;
+  top: 50%;
+  left: 8%;
+  transform: translate(-8%, -50%);
 }
 
 @media (max-width: 1100px) {

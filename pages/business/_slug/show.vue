@@ -2,33 +2,30 @@
   <div>
     <Navbar />
     <div class="container container-sm business">
-      <div class="business-header" :style="{ backgroundImage: `url('https://wallpaperaccess.com/full/1900672.jpg')` }">
-        <img src="https://autoplius-static.dgn.lt/static/images/svg/autoplius-logo.svg?v=c2" class="business-logo" />
+      <div class="business-header" :style="{ backgroundImage: `url('${business.cover}')` }">
+        <img :src="business.logo" class="business-logo" />
       </div>
       <p class="business-description">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        {{ business.longDescription }}
       </p>
       <CardsServicesContainer>
-        <CardsService @click="() => $router.push('/business/verslas-nuo-nulio/services/1/book')">
-          Ratų keitimas
+        <CardsService v-for="(service, index) in services"
+                      :key="index"
+                      @click="() => $router.push(`/business/${business.slug}/services/${service.id}/book`)">
+          {{ service.title }}
 
           <template v-slot:description>
-            Profesionaliai išmontuosime ratus.
+            {{ service.description }}
           </template>
 
           <template v-slot:price>
-            Kaina: 10-20Eur
-          </template>
-        </CardsService>
-        <CardsService @click="() => $router.push('/business/verslas-nuo-nulio/services/2/book')">
-          Ratų balansavimas
-
-          <template v-slot:description>
-            Išbalansuosim Jūsų ratus.
-          </template>
-
-          <template v-slot:price>
-            Kaina: 10-100Eur
+            Kaina:
+            <template v-if="service.maxPrice">
+              {{ service.minPrice }}-{{ service.maxPrice}}Eur
+            </template>
+            <template v-else>
+              {{ service.minPrice }}Eur
+            </template>
           </template>
         </CardsService>
       </CardsServicesContainer>
@@ -38,8 +35,18 @@
 
 <script>
 export default {
-  async asyncData() {
+  async asyncData({ store, route, error }) {
+    const slug = route.params.slug;
 
+    const business = await store.dispatch('businesses/get', slug);
+
+    if (!business) {
+      error({ statusCode: 404, message: 'Toks verslas neegzistuoja.' });
+    }
+
+    const services = await store.dispatch('businesses/services', slug);
+
+    return { business, services };
   },
 };
 </script>

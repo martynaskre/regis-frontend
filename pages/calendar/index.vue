@@ -1,36 +1,70 @@
 <template>
   <div>
     <Navbar />
+    <Modal :show="booking">
+      <div v-if="booking">
+        <h3 class="mb-10">
+          Apsilankymas versle „{{ booking.service.business.title }}”
+        </h3>
+        <p>
+          Paslaugos pavadinimas:
+          <b>
+            {{ booking.service.title }}
+          </b>
+        </p>
+        <p>
+          Paslaugos teikimo pradžia:
+          <b>
+            {{ booking.reservedTime | humanReadableDate }}
+          </b>
+        </p>
+        <p>
+          Paslaugos trukmė:
+          <b>
+            {{ booking.duration}} valanda
+          </b>
+        </p>
+      </div>
+    </Modal>
     <div class="mt-20"></div>
-    <Timetable>
+    <Timetable @entryClick="showBooking">
       <TimetableEntry
-        :type="'taken-provider'"
-        :occursAt="new Date('2021-12-29 09:00:00')"
-        :duration="4"
-      />
-      <TimetableEntry
-        :type="'taken-client'"
-        :occursAt="new Date('2021-12-30 09:00:00')"
-        :duration="10"
-      />
-      <TimetableEntry
-        :type="'default'"
-        :title="'Apsilankymas grožio salone „Grakšti gazelė”'"
-        :occursAt="new Date('2021-12-01 09:00:00')"
-        :duration="5"
-      />
-      <TimetableEntry
-        :type="'default'"
-        :title="'Apsilankymas automobilių servise „Puvena”'"
-        :occursAt="new Date('2021-12-01 15:00:00')"
-        :duration="2"
+        v-for="(booking, index) in bookings"
+        :key="index"
+        :type="booking.type"
+        :occursAt="new Date(booking.reservedTime)"
+        :duration="booking.duration"
+        :title="booking.title"
+        :booking-id="booking.id"
       />
     </Timetable>
   </div>
 </template>
 
 <script>
+import moment from 'moment';
+
 export default {
-  middleware: 'auth',
+  middleware: 'auth-client',
+  async asyncData({ store }) {
+    const bookings = await store.dispatch('clients/getBookings');
+
+    return { bookings };
+  },
+  filters: {
+    humanReadableDate(value) {
+      return moment(value).format('Y-MM-DD hh:mm:ss')
+    }
+  },
+  data() {
+    return {
+      booking: null,
+    }
+  },
+  methods: {
+    async showBooking(id) {
+      this.booking = await this.$store.dispatch('clients/getBooking', id);
+    }
+  }
 };
 </script>

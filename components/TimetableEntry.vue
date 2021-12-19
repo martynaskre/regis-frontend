@@ -16,6 +16,10 @@
      duration: {
        required: true,
        type: Number,
+     },
+     bookingId: {
+       required: false,
+       type: Number,
      }
    }
  }

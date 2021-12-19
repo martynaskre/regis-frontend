@@ -19,17 +19,29 @@
 
 <script>
 export default {
+  middleware: 'auth-client',
+  async asyncData({ store, route, error }) {
+    const slug = route.params.slug;
+    const serviceId = Number(route.params.id);
+
+    const services = await store.dispatch('businesses/services', slug);
+
+    const service = services.find((service) => service.id === serviceId);
+
+    if (!service) {
+      error({ statusCode: 404, message: 'Tokia paslauga neegzistuoja.' });
+    }
+
+    const bookings = await store.dispatch('businesses/fetchBookings', {
+      businessId: slug,
+    });
+
+    return { service, bookings };
+  },
   data() {
     return {
       bookings: [],
     };
-  },
-  async fetch() {
-    this.bookings = await this.$store.dispatch('businesses/fetchBookings', {
-      businessId: 1,
-    });
-
-    //console.log(this.bookings);
   },
   methods: {
     submit({ entry, date }) {
@@ -43,16 +55,32 @@ export default {
           2000
         );
       } else {
-        this.$notify(
-          {
-            group: 'success',
-            title: 'Veiksmas sėkmingas',
-            text: 'Užsiregistravote paslaugai „Verslas nuo nulio”!',
-          },
-          2000
-        );
+        const response = this.$store.dispatch('clients/createBooking', {
+          reservedTime: date,
+          serviceId: this.service.id,
+        })
 
-        this.$router.push('/calendar');
+        if (response) {
+          this.$notify(
+            {
+              group: 'success',
+              title: 'Veiksmas sėkmingas',
+              text: `Užsiregistravote paslaugai „${this.service.title}”!`,
+            },
+            2000
+          );
+
+          this.$router.push('/calendar');
+        } else {
+          this.$notify(
+            {
+              group: 'error',
+              title: 'Klaida',
+              text: 'Šis laikas jau užimtas!',
+            },
+            2000
+          );
+        }
       }
     }
   }

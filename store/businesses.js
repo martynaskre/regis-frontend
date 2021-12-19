@@ -58,4 +58,13 @@ export const actions = {
 
     return [];
   },
+  async get({}, idOrSlug) {
+    try {
+      let response = await this.$axios.get(`business/${idOrSlug}`);
+
+      return response.data.data;
+    } catch (e) {}
+
+    return null;
+  }
 }

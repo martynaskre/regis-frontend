@@ -20,7 +20,10 @@
               :class="mapEntryClasses(entry)"
               @click="handleClick(time, index)">
             <div v-if="entry.type === 'default' && Object.entries(entry).length !== 0"
-                 class="timetable-activity">
+                 class="timetable-activity"
+                 :class="{ 'timetable-activity-clickable': entry.hasOwnProperty('bookingId') }"
+                 @click="handleEntryClick(entry)"
+            >
               <h4 class="timetable-activity-heading">
                 {{ entry.title }}
               </h4>
@@ -126,6 +129,9 @@ export default {
     }
   },
   methods: {
+    handleEntryClick(entry) {
+      this.$emit('entryClick', entry.bookingId);
+    },
     handleClick(time, entryIndex) {
       const entry = this.entries[time][entryIndex];
       const date = new Date(this.weekDays[entryIndex].clone()
@@ -167,8 +173,8 @@ export default {
       });
 
       return {
-        lowest,
-        highest,
+        lowest: 0,
+        highest: 23,
       }
     }
   }
@@ -267,6 +273,10 @@ export default {
           background-color: $primary-green;
           border-radius: 1rem;
           padding: 0.75rem;
+
+          &.timetable-activity-clickable {
+            cursor: pointer;
+          }
 
           .timetable-activity-heading {
             font-size: 0.75rem;
