@@ -105,7 +105,7 @@ export default {
           }));
         } else {
           responses.push(await this.$store.dispatch('schedule/create', {
-            businessId: 1,
+            businessId: this.business.id,
             ...scheduleEntry
           }));
         }
