@@ -20,19 +20,19 @@
     </CardsBusinessesContainer>
     <div class="container container-sm grid-rows grid-of-3">
       <button
-        class="button button-warning"
+        class="button button-warning text"
         @click="() => $router.push(`/business/edit`)"
       >
         Redaguoti bazinę informaciją
       </button>
       <button
-        class="button button-warning"
+        class="button button-warning text"
         @click="() => $router.push(`/business/services`)"
       >
         Redaguoti paslaugas
       </button>
       <button
-        class="button button-warning"
+        class="button button-warning text"
         @click="() => $router.push(`/business/schedule`)"
       >
         Redaguoti darbo laiką
@@ -76,11 +76,8 @@ export default {
   }
 }
 @media (max-width: 500px) {
-  button {
-    height: 42px;
-  }
-  .button {
-    font-size: 15px;
+  .text {
+    font-size: 0.8rem !important;
     padding: 0;
   }
 }

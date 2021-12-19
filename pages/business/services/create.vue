@@ -30,13 +30,18 @@
         </div>
       </div>
       <div class="container container-sm">
-        <Input name="description"
-               type="textarea"
-               label="Aprašymas:"
-               v-model="description"
-               :businessInput="true" />
+        <Input
+          name="description"
+          type="textarea"
+          label="Aprašymas:"
+          v-model="description"
+          :businessInput="true"
+        />
       </div>
-      <button class="button button-large button-rounded button-success" @click="submit">
+      <button
+        class="button button-large button-rounded button-success"
+        @click="submit"
+      >
         Sukurti paslaugą
       </button>
     </div>
@@ -96,3 +101,24 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+@media (max-width: 1100px) {
+  .form-inner {
+    display: flex;
+    flex-direction: column;
+    label {
+      position: relative;
+      right: 38%;
+      text-align: left;
+    }
+  }
+}
+@media (max-width: 500px) {
+  .name {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+}
+</style>

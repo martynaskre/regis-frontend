@@ -133,3 +133,12 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+@media (max-width: 1100px) {
+  .justify-end {
+    justify-content: center;
+    padding-bottom: 0;
+  }
+}
+</style>
