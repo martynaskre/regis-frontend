@@ -29,7 +29,7 @@
       placeholder="Pakartotas slaptažodis"
       v-model="passwordConfirmation"
     />
-    <h3>Legal entity type</h3>
+    <h3>Asmens tipas:</h3>
     <div class="checkBox-positioning">
       <input
         type="radio"
@@ -38,7 +38,7 @@
         class="checkBox"
         v-model="isLegalEntity"
       />
-      <h4>Indivdas</h4>
+      <h4>Fizinis</h4>
       <input
         type="radio"
         name="isLegalEntity"
@@ -46,7 +46,7 @@
         class="checkBox"
         v-model="isLegalEntity"
       />
-      <h4>Juridinis asmuo</h4>
+      <h4>Juridinis</h4>
     </div>
     <Input
       class="logInput"
