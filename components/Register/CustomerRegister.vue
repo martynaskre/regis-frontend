@@ -1,49 +1,49 @@
 <template>
   <div :class="ContainerCustomer">
-    <h2>Register as a customer</h2>
+    <h2>Registruotis kaip klientui</h2>
     <Input
       class="logInput"
       name="firstName"
       type="text"
-      placeholder="First name"
+      placeholder="Vardas"
       v-model="firstName"
     />
     <Input
       class="logInput"
       name="lastName"
       type="text"
-      placeholder="Last name"
+      placeholder="Pavardė"
       v-model="lastName"
     />
     <Input
       class="logInput"
       name="email"
       type="email"
-      placeholder="Email"
+      placeholder="El. paštas"
       v-model="email"
     />
     <Input
       class="logInput"
       name="phoneNumber"
       type="text"
-      placeholder="Phone number"
+      placeholder="Telefono nr."
       v-model="phoneNumber"
     />
     <Input
       class="logInput"
       name="password"
       type="password"
-      placeholder="Password"
+      placeholder="Slaptažodis"
       v-model="password"
     />
     <Input
       class="logInput"
       name="passwordConfirmation"
       type="password"
-      placeholder="Password confirmation"
+      placeholder="Pakartotas slaptažodis"
       v-model="passwordConfirmation"
     />
-    <button class="btnReg" @click="submit">Signup</button>
+    <button class="btnReg" @click="submit">Registruotis</button>
   </div>
 </template>
 

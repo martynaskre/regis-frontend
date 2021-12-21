@@ -1,32 +1,32 @@
 <template>
   <div :class="ContainerProvider">
-    <h2>Register as a <br />service provider</h2>
+    <h2>Registruotis kaip paslaugos tiekėjas</h2>
     <Input
       class="logInput"
       name="firstName"
       type="text"
-      placeholder="First name"
+      placeholder="Vardas"
       v-model="firstName"
     />
     <Input
       class="logInput"
       name="lastName"
       type="text"
-      placeholder="Last name"
+      placeholder="Pavardė"
       v-model="lastName"
     />
     <Input
       class="logInput"
       name="password"
       type="password"
-      placeholder="Password"
+      placeholder="Slaptažodis"
       v-model="password"
     />
     <Input
       class="logInput"
       name="passwordConfirmation"
       type="password"
-      placeholder="Password confirmation"
+      placeholder="Pakartotas slaptažodis"
       v-model="passwordConfirmation"
     />
     <h3>Legal entity type</h3>
@@ -38,7 +38,7 @@
         class="checkBox"
         v-model="isLegalEntity"
       />
-      <h4>Individual</h4>
+      <h4>Indivdas</h4>
       <input
         type="radio"
         name="isLegalEntity"
@@ -46,20 +46,20 @@
         class="checkBox"
         v-model="isLegalEntity"
       />
-      <h4>Juridical Person</h4>
+      <h4>Juridinis asmuo</h4>
     </div>
     <Input
       class="logInput"
       name="email"
       type="email"
-      placeholder="Email"
+      placeholder="El. paštas"
       v-model="email"
     />
     <Input
       class="logInput"
       name="phoneNumber"
       type="text"
-      placeholder="Phone number"
+      placeholder="Telefono nr."
       v-model="phoneNumber"
     />
     <Input
@@ -67,7 +67,7 @@
       v-if="isLegalEntity === '1'"
       name="companyName"
       type="text"
-      placeholder="Company name"
+      placeholder="Kompanijos pavadinimas"
       v-model="companyName"
     />
     <Input
@@ -81,10 +81,10 @@
       class="logInput"
       name="vatCode"
       type="text"
-      placeholder="VAT code"
+      placeholder="PVM kodas"
       v-model="vatCode"
     />
-    <button class="btnReg" @click="submit">Signup</button>
+    <button class="btnReg" @click="submit">Registruotis</button>
   </div>
 </template>
 
@@ -117,7 +117,7 @@ export default {
       };
     },
     codePlaceholder() {
-      return this.isLegalEntity === '0' ? 'Code' : 'Company code';
+      return this.isLegalEntity === '0' ? 'Kodas' : 'Kompanijos kodas';
     },
   },
   methods: {

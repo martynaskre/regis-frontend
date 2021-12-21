@@ -4,11 +4,11 @@
     <div class="centerContainer">
       <div class="login-container">
         <h1>REGIS</h1>
-        <nuxt-link to="/auth/login/client" class="btn">Client</nuxt-link>
+        <nuxt-link to="/auth/login/client" class="btn">Klientas</nuxt-link>
         <nuxt-link to="/auth/login/provider" class="btn"
-          >Service provider</nuxt-link
+          >Paslaugų tiekėjas</nuxt-link
         >
-        <nuxt-link to="/auth/signup" class="reg">Register</nuxt-link>
+        <nuxt-link to="/auth/signup" class="reg">Registracija</nuxt-link>
       </div>
     </div>
   </div>

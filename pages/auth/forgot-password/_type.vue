@@ -4,7 +4,9 @@
     <div class="centerContainer">
       <div class="login-container">
         <h1>REGIS</h1>
-        <p v-if="successful" class="mb-2">Slaptažodžio atkūrimo laiškas išsiųstas į el. paštą.</p>
+        <p v-if="successful" class="mb-2">
+          Slaptažodžio atkūrimo laiškas išsiųstas į el. paštą.
+        </p>
         <Input
           class="logInput"
           name="email"
@@ -13,9 +15,7 @@
           v-model="email"
           :disabled="disabled"
         />
-        <button class="btn log"
-                :disabled="disabled"
-                @click="submit">
+        <button class="btn log" :disabled="disabled" @click="submit">
           Atkurti slaptažodį
         </button>
       </div>
@@ -43,13 +43,18 @@ export default {
   },
   methods: {
     async submit() {
-      this.successful = await this.$store.dispatch(`${this.type}s/forgotPassword`, this.email);
+      this.successful = await this.$store.dispatch(
+        `${this.type}s/forgotPassword`,
+        this.email
+      );
 
       if (this.successful) {
-        this.$notify({
+        this.$notify(
+          {
             group: 'success',
             title: 'Slaptažodžio atkūrimo laiškas išsiųstas!',
-          }, 3000
+          },
+          3000
         );
 
         this.disabled = true;
@@ -75,5 +80,8 @@ export default {
   position: relative;
   text-align: center;
   width: 60%;
+}
+h1 {
+  margin-top: 0;
 }
 </style>
