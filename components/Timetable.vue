@@ -3,10 +3,12 @@
     <table class="timetable">
       <thead>
         <tr>
-          <th></th>
+          <th>
+            {{ selectedWeek.start | month }}
+          </th>
           <th v-for="weekDay in weekDays">
             {{ weekDay.date() }}
-            {{ weekDay.format('dddd') }}
+            {{ weekDay.locale('lt').format('dddd') }}
           </th>
         </tr>
       </thead>
@@ -35,6 +37,23 @@
         </tr>
       </tbody>
     </table>
+    <div v-if="previousButton || hasDescriptionSlot || nextButton" class="timetable-floating-bar">
+      <div v-if="previousButton && !isPreviousWeek" class="timetable-floating-bar-left">
+        <button class="timetable-previous" @click="handlePreviousClick">
+          <img src="~assets/img/icons/chevron-left.png" />
+        </button>
+      </div>
+      <div class="timetable-floating-bar-center">
+        <p v-if="hasDescriptionSlot">
+          <slot name="description" />
+        </p>
+      </div>
+      <div v-if="nextButton" class="timetable-floating-bar-right" @click="handleNextClick">
+        <button class="timetable-next">
+          <img src="~assets/img/icons/chevron-right.png" />
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -45,25 +64,54 @@ export default {
   props: {
     booking: {
       type: Boolean,
-      default: false
+      default: false,
     },
+    previousButton: {
+      type: Boolean,
+      default: false,
+    },
+    preventOldPrevious: {
+      type: Boolean,
+      default: false,
+    },
+    nextButton: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data() {
+    return {
+      rawEntries: [],
+      selectedWeek: {
+        start: moment().startOf('isoweek'),
+        end: moment().endOf('isoweek'),
+      },
+    }
   },
   filters: {
     hours(value) {
       return moment().set('hour', value).set('minute', 0).format('HH:mm');
-    }
+    },
+    month(value) {
+      return moment(value).locale('lt').format('MMMM');
+    },
   },
   computed: {
+    isPreviousWeek() {
+      if (this.preventOldPrevious) {
+        return moment().startOf('isoweek').set('hour', 0).set('minute', 0).set('second', 0).set('millisecond', 0).toDate().getTime() ===
+          this.selectedWeek.start.clone().set('hour', 0).set('minute', 0).set('second', 0).set('millisecond', 0).toDate().getTime();
+      }
+
+      return false;
+    },
+    hasDescriptionSlot() {
+      return !!this.$slots.description
+    },
     containerClasses() {
       return (this.booking)
         ? 'booking-timetable-wrapper'
         : '';
-    },
-    selectedWeek() {
-      return {
-        start: moment().startOf('isoweek'),
-        end: moment().endOf('isoweek')
-      }
     },
     weekDays() {
       const now = this.selectedWeek.start.clone();
@@ -76,28 +124,6 @@ export default {
       }
 
       return weekDays;
-    },
-    rawEntries() {
-      const slots = (typeof this.$slots.default === 'object' && this.$slots.default !== null)
-        ? this.$slots.default
-        : {};
-
-      const entries = Object.keys(slots);
-
-      return (entries.length <= 0)
-        ? []
-        : entries.map((key) => {
-          let entry = this.$slots.default[key];
-
-          if (!entry.tag) {
-            return;
-          }
-
-          entry = entry.componentOptions.propsData;
-          entry.occursAt = moment(entry.occursAt);
-
-          return entry;
-        }).filter((entry) => entry !== undefined);
     },
     entries() {
       const entryPoints = this.findEntryPoints();
@@ -146,7 +172,48 @@ export default {
       return entries;
     }
   },
+  mounted() {
+    this.rawEntries = this.getRawEntries();
+
+    this.$nuxt.$on('refreshTimetable', () => {
+      this.rawEntries = this.getRawEntries();
+    });
+  },
   methods: {
+    getRawEntries() {
+      const slots = (typeof this.$slots.default === 'object' && this.$slots.default !== null)
+        ? this.$slots.default
+        : {};
+
+      const entries = Object.keys(slots);
+
+      return (entries.length <= 0)
+        ? []
+        : entries.map((key) => {
+          let entry = this.$slots.default[key];
+
+          if (!entry.tag) {
+            return;
+          }
+
+          entry = entry.componentOptions.propsData;
+          entry.occursAt = moment(entry.occursAt).clone();
+
+          return entry;
+        }).filter((entry) => entry !== undefined);
+    },
+    handlePreviousClick() {
+      this.selectedWeek.start = this.selectedWeek.start.clone().subtract(7, 'days');
+      this.selectedWeek.end = this.selectedWeek.end.clone().subtract(7, 'days');
+
+      this.$emit('previous', this.selectedWeek.start.format('YYYY-MM-DD'));
+    },
+    handleNextClick() {
+      this.selectedWeek.start = this.selectedWeek.start.clone().add(7, 'days');
+      this.selectedWeek.end = this.selectedWeek.end.clone().add(7, 'days');
+
+      this.$emit('next', this.selectedWeek.start.format('YYYY-MM-DD'));
+    },
     handleEntryClick(entry) {
       this.$emit('entryClick', entry.bookingId);
     },
@@ -197,6 +264,38 @@ export default {
         &:not(.taken-provider):not(.taken-client):not(.has-entry) {
           cursor: pointer;
         }
+      }
+    }
+  }
+
+  .timetable-floating-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    background-color: rgba(255, 255, 255, .8);
+    z-index: 998;
+    display: flex;
+    align-items: center;
+
+    .timetable-floating-bar-center {
+      margin: 0 auto;
+    }
+
+    .timetable-previous,
+    .timetable-next {
+      width: 50px;
+      height: 50px;
+      background-color: #6B9AC4;
+      border-radius: 50%;
+      transition: .3s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        opacity: .9;
       }
     }
   }

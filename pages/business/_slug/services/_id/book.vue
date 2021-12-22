@@ -3,16 +3,25 @@
     <Navbar />
     <div class="mt-20"></div>
     <Timetable :booking="true"
+               :nextButton="true"
+               :previousButton="true"
+               :preventOldPrevious="false"
                @book="submit"
+               @previous="fetchCalendar"
+               @next="fetchCalendar"
     >
       <TimetableEntry
         v-for="(booking, index) in bookings"
-        :key="index"
+        :key="generateKey()"
         :type="booking.type"
         :occursAt="new Date(booking.reservedTime)"
         :duration="booking.duration"
         :title="(booking.hasOwnProperty('title')) ? booking.title : null"
       />
+
+      <template v-slot:description>
+        {{ business.category.title }} - „{{ business.title }}” | {{ service.title }}
+      </template>
     </Timetable>
   </div>
 </template>
@@ -24,6 +33,7 @@ export default {
     const slug = route.params.slug;
     const serviceId = Number(route.params.id);
 
+    const business = await store.dispatch('businesses/get', slug);
     const services = await store.dispatch('businesses/services', slug);
 
     const service = services.find((service) => service.id === serviceId);
@@ -36,7 +46,7 @@ export default {
       businessId: slug,
     });
 
-    return { service, bookings };
+    return { service, bookings, business, slug };
   },
   data() {
     return {
@@ -44,6 +54,19 @@ export default {
     };
   },
   methods: {
+    generateKey() {
+      return Math.floor(Math.random() * (1000000 - 1)) + 1;
+    },
+    async fetchCalendar(date) {
+      this.bookings = await this.$store.dispatch('businesses/fetchCalendar', {
+        businessId: this.slug,
+        startDate: date,
+      });
+
+      this.$nextTick(() => {
+        this.$nuxt.$emit('refreshTimetable');
+      });
+    },
     async submit({ entry, date }) {
       if (Object.keys(entry).length > 0) {
         this.$notify(

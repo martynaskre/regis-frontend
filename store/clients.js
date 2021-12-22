@@ -45,9 +45,12 @@ export const actions = {
 
     return false;
   },
-  async getBookings({}) {
+  async getBookings({}, { startDate } = {}) {
+    const url = (startDate)
+      ? `clientBooking/client?startDate=${startDate}`
+      : 'clientBooking/client';
     try {
-      const response = await this.$axios.get('clientBooking/client');
+      const response = await this.$axios.get(url);
 
       return (response.data.hasOwnProperty('data'))
         ? response.data.data

@@ -16,18 +16,26 @@ export const actions = {
 
     return [];
   },
-  async fetchCalendar({}, { businessId }) {
+  async fetchCalendar({}, { businessId, startDate }) {
+    const url = (startDate)
+      ? `business/${businessId}/calendar?startDate=${startDate}`
+      : `business/${businessId}/calendar`;
+
     try {
-      let response = await this.$axios.get(`business/${businessId}/calendar`);
+      let response = await this.$axios.get(url);
 
       return response.data.data;
     } catch (e) {}
 
     return [];
   },
-  async fetchBookings({}, id) {
+  async fetchBookings({}, { id, startDate }) {
+    const url = (startDate)
+      ? `business/${id}/bookings?startDate=${startDate}`
+      : `business/${id}/bookings`;
+
     try {
-      let response = await this.$axios.get(`business/${id}/bookings`);
+      let response = await this.$axios.get(url);
 
       return response.data.data;
     } catch (e) {}

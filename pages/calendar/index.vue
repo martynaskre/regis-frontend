@@ -27,7 +27,12 @@
       </div>
     </Modal>
     <div class="mt-20"></div>
-    <Timetable @entryClick="showBooking">
+    <Timetable @entryClick="showBooking"
+               :nextButton="true"
+               :previousButton="true"
+               @previous="fetchBookings"
+               @next="fetchBookings"
+    >
       <TimetableEntry
         v-for="(booking, index) in bookings"
         :key="index"
@@ -62,6 +67,15 @@ export default {
     }
   },
   methods: {
+    async fetchBookings(date) {
+      this.bookings = await this.$store.dispatch('clients/getBookings', {
+        startDate: date,
+      });
+
+      this.$nextTick(() => {
+        this.$nuxt.$emit('refreshTimetable');
+      });
+    },
     async showBooking(id) {
       this.booking = await this.$store.dispatch('clients/getBooking', id);
     }
