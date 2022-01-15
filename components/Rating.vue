@@ -23,7 +23,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .stars {
   position: absolute;
   bottom: 10px;

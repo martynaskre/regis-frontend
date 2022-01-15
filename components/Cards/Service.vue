@@ -1,6 +1,8 @@
 <template>
   <div class="service">
-    <slot name="actions" />
+    <div class="actions">
+      <slot name="actions" />
+    </div>
     <h5 class="service-title cursor-pointer" @click="handleClick">
       <slot />
     </h5>

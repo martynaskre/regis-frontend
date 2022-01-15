@@ -35,4 +35,13 @@ export const actions = {
 
     return false;
   },
+  async delete({}, id) {
+    try {
+      await this.$axios.delete(`service/${id}`);
+
+      return true;
+    } catch (e) {}
+
+    return false;
+  },
 };

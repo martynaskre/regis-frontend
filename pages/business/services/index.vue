@@ -13,6 +13,9 @@
             <button class="button service-action" @click="() => $router.push(`/business/services/${service.id}/edit`)">
               <img src="~assets/img/icons/edit.png" />
             </button>
+            <button class="button service-action service-action-red" @click="deleteService(service.id)">
+              <img src="~assets/img/icons/delete.png" />
+            </button>
           </template>
 
           {{ service.title }}
@@ -49,6 +52,35 @@ export default {
     const services = await store.dispatch('businesses/services', business.id);
 
     return { services, business };
+  },
+  methods: {
+    async deleteService(id) {
+      if (!confirm("Ar tikrai norite ištrinti paslaugą?")) {
+        return;
+      }
+
+      const response = await this.$store.dispatch('services/delete', id);
+
+      await this.$nuxt.refresh();
+
+      if (response) {
+        this.$notify(
+          {
+            group: 'success',
+            title: 'Paslauga ištrinta!',
+          },
+          2000
+        );
+      } else {
+        this.$notify(
+          {
+            group: 'error',
+            title: 'Įvyko klaida!',
+          },
+          2000
+        );
+      }
+    },
   },
 };
 </script>

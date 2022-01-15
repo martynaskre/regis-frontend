@@ -18,15 +18,22 @@
       z-index: -1;
     }
 
-    .service-action {
-      display: block;
-      width: 45px;
-      height: 45px;
-      background-color: $primary-yellow;
-      border-radius: 50%;
+    .actions {
       position: absolute;
       right: calc(-1rem - 10px);
       top: calc(-1rem - 10px);
+
+      .service-action {
+        display: inline-block;
+        width: 45px;
+        height: 45px;
+        background-color: $primary-yellow;
+        border-radius: 50%;
+
+        &.service-action-red {
+          background-color: $primary-red;
+        }
+      }
     }
 
     .service-description {
