@@ -15,6 +15,8 @@
                        :phoneNumber="'123'"
                        :logo="business.logo"
                        :cover="business.cover"
+                       :showRating="true"
+                       :rating="business.rating"
         >
           {{ business.title }}
 

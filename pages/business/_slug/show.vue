@@ -4,6 +4,7 @@
     <div class="container container-sm business">
       <div class="business-header" :style="{ backgroundImage: `url('${business.cover}')` }">
         <img :src="business.logo" class="business-logo" />
+        <Rating :rating="business.rating" />
       </div>
       <p class="business-description">
         {{ business.longDescription }}

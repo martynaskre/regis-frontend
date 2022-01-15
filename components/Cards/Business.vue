@@ -14,6 +14,8 @@
       <p class="providerDescription">
         <slot name="description" />
       </p>
+      <Rating v-if="showRating"
+              :rating="rating" />
     </div>
   </div>
 </template>
@@ -32,7 +34,15 @@ export default {
     cover: {
       type: String,
       required: true,
-    }
+    },
+    showRating: {
+      type: Boolean,
+      default: false,
+    },
+    rating: {
+      type: Number,
+      default: 0,
+    },
   },
   methods: {
     handleClick(e) {
