@@ -37,7 +37,7 @@
         </tr>
       </tbody>
     </table>
-    <div v-if="previousButton || hasDescriptionSlot || nextButton" class="timetable-floating-bar">
+    <div v-if="showFloatingBar" class="timetable-floating-bar">
       <div v-if="previousButton && !isPreviousWeek" class="timetable-floating-bar-left">
         <button class="timetable-previous" @click="handlePreviousClick">
           <img src="~assets/img/icons/chevron-left.png" />
@@ -97,6 +97,9 @@ export default {
     },
   },
   computed: {
+    showFloatingBar() {
+      return this.previousButton || this.hasDescriptionSlot || this.nextButton;
+    },
     isPreviousWeek() {
       if (this.preventOldPrevious) {
         return moment().startOf('isoweek').set('hour', 0).set('minute', 0).set('second', 0).set('millisecond', 0).toDate().getTime() ===
@@ -109,9 +112,17 @@ export default {
       return !!this.$slots.description
     },
     containerClasses() {
-      return (this.booking)
-        ? 'booking-timetable-wrapper'
-        : '';
+      const classes = [];
+
+      if (this.booking) {
+        classes.push('booking-timetable-wrapper')
+      }
+
+      if (this.showFloatingBar) {
+        classes.push('has-floating-bar')
+      }
+
+      return classes.join(' ');
     },
     weekDays() {
       const now = this.selectedWeek.start.clone();
@@ -266,6 +277,10 @@ export default {
         }
       }
     }
+  }
+
+  &.has-floating-bar {
+    margin-bottom: 100px;
   }
 
   .timetable-floating-bar {
