@@ -76,5 +76,14 @@ export const actions = {
     } catch (e) {}
 
     return null;
-  }
+  },
+  async deleteBooking({}, id) {
+    try {
+      await this.$axios.delete(`clientBooking/${id}`);
+
+      return true;
+    } catch (e) {}
+
+    return false;
+  },
 }

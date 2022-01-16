@@ -24,6 +24,11 @@
             {{ booking.duration}} valanda
           </b>
         </p>
+        <div v-if="isBookingNew" class="mt-5">
+          <button class="button button-warning" @click="cancelBooking(booking.id)">
+            Atšaukti rezervaciją
+          </button>
+        </div>
       </div>
     </Modal>
     <div class="mt-20"></div>
@@ -64,6 +69,19 @@ export default {
   data() {
     return {
       booking: null,
+      currentWeek: moment().startOf('isoweek'),
+    }
+  },
+  computed: {
+    isBookingNew() {
+      if (!this.booking) {
+        return false;
+      }
+
+      const end = moment(this.booking.reservedTime);
+      const duration = moment.duration(end.diff(moment()));
+
+      return duration.asHours() > 24;
     }
   },
   methods: {
@@ -72,12 +90,43 @@ export default {
         startDate: date,
       });
 
+      this.currentWeek = date;
+
       this.$nextTick(() => {
         this.$nuxt.$emit('refreshTimetable');
       });
     },
     async showBooking(id) {
       this.booking = await this.$store.dispatch('clients/getBooking', id);
+    },
+    async cancelBooking(id) {
+      if (!confirm("Ar tikrai norite atšaukti rezervaciją?")) {
+        return;
+      }
+
+      const response = await this.$store.dispatch('clients/deleteBooking', id);
+
+      await this.fetchBookings(this.currentWeek);
+
+      if (response) {
+        this.booking = null;
+
+        this.$notify(
+          {
+            group: 'success',
+            title: 'Rezervacija sėkmignai atšaukta!',
+          },
+          2000
+        );
+      } else {
+        this.$notify(
+          {
+            group: 'error',
+            title: 'Įvyko klaida!',
+          },
+          2000
+        );
+      }
     }
   }
 };
